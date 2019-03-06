@@ -1,0 +1,267 @@
+doctype html
+html(lang="zh-Hant-TW")
+  head
+    meta(charset="utf-8")
+    title= title
+    meta(name="description", content= keyword)
+    meta(name="keywords", content= keyword)
+    meta(name="viewport", content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1")
+    link(rel="Shortcut Icon", type="image/x-icon", href="/pc/img/dw_icon.ico")
+    link(rel='stylesheet', href='css/reset.css')
+    link(rel='stylesheet', href='css/swiper.css')
+    link(rel='stylesheet', href='css/pre_page_20190226.css')
+    link(rel='stylesheet', href='css/animate.min.css')
+    script(src="https://cdn.rawgit.com/github/fetch/master/fetch.js")
+    
+  body
+    #fb-root
+    script(async defer src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v3.2&appId=192173398171360&autoLogAppEvents=1")
+    #pre_outer_layer
+        #pre_form
+            form(action="", method="post" onsubmit="return submitData()")
+                input.email_input(id="email_address", name="email_address" type="email", placeholder="請輸入電子郵件信箱" required)
+                div#showIfEmailFilled
+                    #pre_fb
+                        
+                        .fb-like(data-href="https://www.facebook.com/IdentityVgame/", data-layout="standard", data-action="like", data-size="small", data-show-faces="false", data-share="true")
+                        div(style="padding-bottom:20px;") 粉絲團按讚確保接收最新訊息
+                        span
+                    label#check_box_style
+                        input(type="checkbox", name="chk_agree",id="chk_agree", checked, disabled=true)
+                        span.checkmark
+                        | 按下立即預約即表示同意 
+                        a(href="https://game.longeplay.com.tw/member/complete_agreement#privacy", target="blank") 使用條款
+                        | 以及
+                        a(href="https://game.longeplay.com.tw/member/complete_agreement#data_use", target="blank") 隱私權政策
+                        
+                        
+                input#pre_confirm_btn(type="submit", value="")
+            #pre_close
+    .swiper-container
+        .swiper-wrapper
+            .swiper-slide
+                #container_bg
+                    .black_layer(style="display: none;")
+                    .logo_icon
+                    video.video_bg(src="img/bg.mp4", loop="loop", preload="", autoplay="autoplay", muted="muted", style="display: none;")
+                    #container
+                        #mList(style="display: none;")
+                            a.playVideo(href="https://www.youtube.com/watch?v=7g7cKYObbBA")
+                                i
+                        #banner
+                        #game_title(style="display: none;")
+                        #pre_btn 點我登錄
+                    #slide-down
+            .swiper-slide
+                .page2_bg
+                    #pre_page2_title
+                    #pre_arrive_content2
+                        #timeline
+                            #timleline_arrivepercent
+                                i(style="left:260px")
+                                    span
+                                        img(src="img/50000.png", alt="50000")
+                                i(style="left:520px")
+                                    span
+                                        img(src="img/100000.png", alt="100000")
+                                i(style="left:780px")
+                                    span
+                                        img(src="img/150000.png", alt="150000")
+                                i(style="left:1040px")
+                                    span
+                                        img(src="img/200000.png", alt="200000")
+                                i(style="left:1300px;background-color:rgba(0,0,0,0)")
+                                    span
+                                        img(src="img/250000.png", alt="250000")
+                                .arrive_icon
+                        #arrive_number
+                            span= 152500
+                            | &nbsp;位
+                        #arrive_animal
+                        #animal_arrive1
+                            .arrive_gift_detail
+                                i
+                                    h1=	伐木大師的饋贈
+                                    | 石幣*50,000
+                                    br
+                                    | 伐木斧-2级*1 
+                                    br 
+                                    | 海民耐吃肉乾*3
+                        #animal_arrive2
+                            .arrive_gift_detail
+                                i
+                                    h1=	採礦大師的饋贈
+                                    | 石幣*60,000
+                                    br 
+                                    | 礦鎬-2级*1
+                                    br
+                                    | 海民耐吃果乾*3
+                                    br 
+                                    | 小份活力肉腿*1
+                        #animal_arrive3
+                            .arrive_gift_detail
+                                i
+                                    h1=	割草大師的饋贈
+                                    | 石幣*80,000
+                                    br 
+                                    | 鐮刀-2级*1
+                                    br 
+                                    | 海民寵物口糧*3
+                                    br 
+                                    | 芬里克之花*2
+                        #animal_arrive4
+                            .arrive_gift_detail
+                                i
+                                    h1=	剝皮大師的饋贈
+                                    | 石幣*100,000
+                                    br 
+                                    | 剝皮刀-2级*1
+                                    br 
+                                    | 海民燉肉*6
+                                    br 
+                                    | 馴寵石*2
+                        #animal_arrive5
+                            .arrive_gift_detail
+                                i
+                                    h1=	馴獸大師的饋贈
+                                    | 石幣*150,000
+                                    br 
+                                    | 還原石*1
+                                    br 
+                                    | 普通藏寶圖碎片*6
+                                    br 
+                                    | 鎧甲獸騎乘證(7日)*1
+                        
+                        #notice
+                    .slide-down
+            .swiper-slide
+                .page2_bg
+                    #pre_page3_title
+                    iframe.page3_video(src="https://www.youtube.com/embed/wxB5NyorFHs", frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+                .footer
+                    .footer_copyright
+                        span.netease
+                        a(href="https://game.longeplay.com.tw")
+                            span.longe
+                        span.service
+                        span.footer_service
+                            p 台灣遊戲代理：龍邑股份有限公司
+                                br 
+                                | 線上回報：
+                                a(href="https://game.longeplay.com.tw/service_quick?param_game_id=H54&site=long_e", target="_blank") 聯絡客服
+                        .text
+                            p 《海島紀元》依遊戲軟體分級管理辦法分類為普通級。 本應用遊戲為免費使用，內另有提供購買虛擬遊戲幣、物品等付費服務。 請依個人興趣、能力進行體驗，並注意遊戲時間避免沉迷。
+    div#mPlayer
+        div#video_close
+
+script(src="js/jquery-2.1.1.min.js")
+script(src="js/swiper.min.js")
+script(src="js/swiper.animate1.0.3.min.js")
+script(src="js/pre_dawnofisles.js")
+script.
+    
+    var swiper = new Swiper('.swiper-container', {
+        direction: 'vertical',
+        //freeMode:true,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        speed:500,
+        mousewheel:  true,
+        allowTouchMove: false,
+        //mousewheel: {
+        //forceToAxis: true,
+        //},
+        //pagination: {
+        //  el: '.swiper-pagination',
+        //  clickable: true,
+        //},
+        on:{
+            init: function(){
+                swiperAnimateCache(this); 
+                swiperAnimate(this); 
+            }, 
+            slideChangeTransitionEnd: function(){ 
+                swiperAnimate(this); 
+            } 
+        }
+    });
+    //- document.querySelector('.swiper-container').addEventListener('mousewheel', function(e){
+    //-     console.log('mousewheel triggered',e)
+    //-     e.stopPropagation();
+    //- });	
+    //video1
+    $('#mList A').on('click',function(e){
+        e.preventDefault();
+        // get video url
+        var u = $(this).attr('href');
+        // display video or go to youtube depending on window size
+        // this is an attempt to load videos on mobile devices in the youtube app
+        if($(window).width() > 800){
+            // get video id
+            var i = u.substring(u.search('=')+1,u.length);
+            // build player
+            $('#mPlayer DIV').html('<iframe width="840" height="472" src="https://www.youtube.com/embed/' + i + '?rel=0&autoplay=1;controls=1&showinfo=0 frameborder="1" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
+            // display player
+            $('#mPlayer').fadeIn(500);
+        } else 
+        {
+            window.location.href = u;
+        }
+    }); 
+    // eof display player
+    // hide video player
+    $('#mPlayer').on('click',function(e){
+        // hide player
+        $('#mPlayer').fadeOut(500);
+        // destroy player
+        $('#mPlayer DIV').empty();
+    }); 
+    // eof hide player
+    function submitData(){
+        event.preventDefault();
+        var url = 'post_preregister';
+        var email_address_input = document.getElementById('email_address');
+        var chk_agree_input = document.getElementById('chk_agree');
+        var data = {email_address: email_address_input.value, chk_agree: chk_agree_input.checked};
+        console.log(data);
+
+        fetch(url, {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(data), // data can be `string` or {object}!
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+        }).then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => {
+            
+            if (response.status=='success'){
+                console.log('Success:', response.status);
+                //document.getElementById('pre_form').style.display='none';
+                
+                document.getElementById('pre_form').innerHTML = "<div class='success_msg'>" 
+                    + "親愛的準搗民, <br/>感謝您的參與。<br /> 您的 mail:"
+                    + data.email_address 
+                    + ((response.registered?"<br />在<font color='red'>" + response.registered.create_time +"</font>":"" )) +'已經收入我們的拓荒者登記簿，<br />請耐心等待我們完成基礎建設。 <br />'
+                    + ' 期待與您共同開創海島新紀元！ <br />'
+                    + '<input class="btnReset" type=button value="我知道了" onclick="javascript:location.reload();" /></div>';
+            } else {
+                console.log(response.errors);
+                if (response.errors) {
+                        response.errors.forEach((error)=>{
+                            console.log(error.param);
+                            var elem = document.getElementById(error.param);
+                            elem.classList.add("is-invalid");
+                            var feedbackDiv = document.createElement("div");
+                            feedbackDiv.innerHTML=error.msg;
+                            feedbackDiv.classList.add('invalid-feedback');
+                            elem.parentNode.insertBefore(feedbackDiv,elem.nextSibling);
+                        });
+                }
+            }
+            
+        });
+
+
+    };
+    

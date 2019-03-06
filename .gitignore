@@ -1,0 +1,9 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+node_modules/
+jspm_packages/
+models/dbconnection.js
+test_db/
+source/

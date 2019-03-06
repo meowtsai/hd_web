@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root_div"></div>
+</body>
+</html>
+
+<script>
+var divTarget = document.createElement("div"); 
+var attObj = {"id":"arrive1","class":"ani","swiper-animate-effect":"bounceIn","swiper-animate-duration":"0.5s","swiper-animate-delay":"0.3s","style":"display: inline;"};
+
+for (var key in attObj) {
+    if (attObj.hasOwnProperty(key)) {
+        console.log(key + " -> " + attObj[key]);
+        var att = document.createAttribute(key);
+        att.value = attObj[key];
+        divTarget.setAttributeNode(att); 
+    }
+    
+}
+
+// var att = document.createAttribute("class");       // Create a "class" attribute
+// att.value = "ani";                           // Set the value of the class attribute
+// divTarget.setAttributeNode(att);    
+divTarget.innerText ="HELLO!";
+document.getElementById("root_div").appendChild(divTarget);
+</script>
+
+<!-- //<div id="arrive1" class="ani" swiper-animate-effect="bounceIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s" style="display: none;"></div> -->
