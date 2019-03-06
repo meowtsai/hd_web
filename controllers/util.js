@@ -7,7 +7,7 @@ exports.get_count = function(req,res,next){
 }
 
 function prereg_count(){
-    const begin_date = new Date('2018-03-06');
+    const begin_date = new Date('2019-03-05');
     const end_date ='2019-04-20';
     const date_now = new Date();
     const target_number = 256182;
