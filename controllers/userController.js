@@ -3,12 +3,24 @@ const { sanitizeBody } = require('express-validator/filter');
 const moment  = require('moment');
 //const axios = require('axios');
 const connection = require('../models/dbconnection'); 
+const nodemailer = require("nodemailer");
+const smtp_server = require('../config')['smtp_server'];
+
 //var async = require('async');
+
 
 exports.preregister = function(req,res,next){
     console.log('called preregister');
     res.render('pc/preregister', { title: '海島紀元預約登錄', keyword:'海島紀元' });
+
 }
+
+exports.mb_preregister = function(req,res,next){
+    console.log('called mbpreregister');
+    res.render('mb/preregister', { title: '海島紀元預約登錄', keyword:'海島紀元' });
+
+}
+
 
 
 exports.post_preregister = [
@@ -39,6 +51,27 @@ exports.post_preregister = [
                         if (error) throw error;
                         //connection.end();
                         console.log("results.insertId ", xresults.insertId );
+                        /// EMAIL /////
+                        if (process.env.NODE_ENV!='development') {
+                            let transporter = nodemailer.createTransport(smtp_server);
+                            let mailOptions = {
+                                from: '"Fred Foo 👻" <no-reply@longeplay.com.tw>', // sender address
+                                to: email, // list of receivers
+                                subject: "海島紀元預註冊成功通知 ✔", // Subject line
+                                text: "Hello world? 你好阿", // plain text body
+                                html: "<b>Hello world? 你好阿</b>" // html body
+                              };
+                            
+                              // send mail with defined transport object
+                              let info = transporter.sendMail(mailOptions)
+                            
+                              console.log("Message sent: %s", info.messageId);
+    
+                              /// EMAIL /////
+                        }
+                        
+
+
                         return res.status(200).json({ errors: {}, status:'success',insid: xresults.insertId });
                     });
                     console.log(query.sql); 

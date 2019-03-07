@@ -6,6 +6,8 @@ var logger = require('morgan');
 const expressip = require('express-ip');
 var indexRouter = require('./routes/index');
 var pcRouter = require('./routes/pc');
+var mbRouter = require('./routes/mb');
+
 
 var app = express();
 
@@ -20,8 +22,33 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressip().getIpInfoMiddleware);
 
+
+
+// agent
+app.use(function(req, res, next) {
+  var useragent = req.headers['user-agent'];
+  //console.log("app env=" + app.get('env'));
+  //process.env.NODE_ENVconsole.log("process.env. env=" + JSON.stringify(process.env.NODE_ENV));
+  
+  if (useragent.indexOf('Mobi')>0){
+    res.locals.ismoble = true;  
+    console.log("is_mobile=" + res.locals.ismoble);
+    
+    
+  }
+  else {
+    res.locals.ismoble = false;
+    console.log("is_mobile=" + res.locals.ismoble);
+    
+    
+  }
+  next();
+});
+
 app.use('/', indexRouter);
+app.use('/mb', mbRouter);
 app.use('/pc', pcRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

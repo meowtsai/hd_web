@@ -1,6 +1,5 @@
 $(function(){
-    $("#pre_outer_layer").show();
-
+    
     fetch("/get_count", {
         method: 'GET', // or 'PUT'
         headers: new Headers({
@@ -21,7 +20,7 @@ $(function(){
             //<div id="arrive1" class="ani" swiper-animate-effect="bounceIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s" style="display: none;"></div>
             //#arrive1.ani(swiper-animate-effect="bounceIn", swiper-animate-duration="0.5s", swiper-animate-delay="0.3s", style="display: none;")
             var divTarget = document.createElement("div"); 
-            var attObj = {"id":"arrive1","class":"ani","swiper-animate-effect":"bounceIn","swiper-animate-duration":"0.5s","swiper-animate-delay":"0.3s","style":"display: inline;"};
+            var attObj = {"class":"ani","swiper-animate-effect":"bounceIn","swiper-animate-duration":"0.5s","swiper-animate-delay":"0.3s","style":"display: inline;"};
 
             for (var key in attObj) {
                 if (attObj.hasOwnProperty(key)) {
@@ -51,8 +50,10 @@ $(function(){
             else if (cnt >= 250000){
                 divTarget.id="arrive5";
             }
+            if (divTarget.id) {
+                document.getElementById("pre_arrive_content2").appendChild(divTarget);
+            }
             
-            document.getElementById("pre_arrive_content2").appendChild(divTarget);
 
             
         });
