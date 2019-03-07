@@ -57,11 +57,11 @@ exports.post_preregister = [
                             let transporter = nodemailer.createTransport(smtp_server);
                             const fs = require('fs');
 
-                            let html_template = fs.readFileSync('../public/template/mail.html', "utf8");
+                            let html_template = fs.readFileSync(path.join(__dirname, '/../public/template/mail.html'), "utf8");
 
-                            html_template = html_template.replace('|CONTENT_HERE|',`親愛的準搗民, <br />
+                            html_template = html_template.replace('|CONTENT_HERE|',`<h1>事前登陸預約</h1> 親愛的準搗民, <br />
                             感謝您的參與。 <br />
-                            您的 mail:${mail} <br />
+                            您的郵件地址：${email} <br />
                             在 ${moment(new Date()).format('YYYY-MM-DD HH:mm:ss')} 已經收入我們的拓荒者登記簿， <br />
                             請耐心等待我們完成基礎建設。  <br />
                             期待與您共同開創海島新紀元！  <br />` );
