@@ -57,7 +57,7 @@ exports.post_preregister = [
                             let transporter = nodemailer.createTransport(smtp_server);
                             const fs = require('fs');
 
-                            let html_template = fs.readFileSync(path.join(__dirname, '/../public/template/mail.html'), "utf8");
+                            let html_template = fs.readFileSync(__dirname + '/../public/template/mail.html', "utf8");
 
                             html_template = html_template.replace('|CONTENT_HERE|',`<h1>事前登陸預約</h1> 親愛的準搗民, <br />
                             感謝您的參與。 <br />
