@@ -5,6 +5,7 @@ const moment  = require('moment');
 const connection = require('../models/dbconnection'); 
 const nodemailer = require("nodemailer");
 const smtp_server = require('../config')['smtp_server'];
+const fs = require('fs');
 
 //var async = require('async');
 
@@ -54,12 +55,22 @@ exports.post_preregister = [
                         /// EMAIL /////
                         if (process.env.NODE_ENV!='development') {
                             let transporter = nodemailer.createTransport(smtp_server);
+                            const fs = require('fs');
+
+                            let html_template = fs.readFileSync('../public/template/mail.html', "utf8");
+
+                            html_template = html_template.replace('|CONTENT_HERE|',`親愛的準搗民, <br />
+                            感謝您的參與。 <br />
+                            您的 mail:${mail} <br />
+                            在 ${moment(new Date()).format('YYYY-MM-DD HH:mm:ss')} 已經收入我們的拓荒者登記簿， <br />
+                            請耐心等待我們完成基礎建設。  <br />
+                            期待與您共同開創海島新紀元！  <br />` );
+
                             let mailOptions = {
-                                from: '"Fred Foo 👻" <no-reply@longeplay.com.tw>', // sender address
+                                from: '"🌊 海島紀元遊戲營運團隊 🍖 " <no-reply@longeplay.com.tw>', // sender address
                                 to: email, // list of receivers
                                 subject: "海島紀元預註冊成功通知 ✔", // Subject line
-                                text: "Hello world? 你好阿", // plain text body
-                                html: "<b>Hello world? 你好阿</b>" // html body
+                                html: html_template // html body
                               };
                             
                               // send mail with defined transport object
