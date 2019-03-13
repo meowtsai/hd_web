@@ -40,3 +40,5 @@ function prereg_count(){
     //return day_x;
 
 }
+
+console.log(prereg_count());

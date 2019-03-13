@@ -28,6 +28,10 @@ router.get('/', function(req, res, next) {
   
 });
 
+router.get('/ipInfo', function (req, res) {
+  res.send(req.ipInfo);
+});
+
 router.get('/get_count', util_controller.get_count);
 
 module.exports = router;
