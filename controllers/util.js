@@ -1,7 +1,9 @@
 
 
+
 exports.get_count = function(req,res,next){
-    return res.status(200).json({count:prereg_count() });
+    //return res.status(200).json({count:prereg_count() });
+    return prereg_count();
 }
 
 function prereg_count(){

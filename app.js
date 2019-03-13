@@ -5,8 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const expressip = require('express-ip');
 var indexRouter = require('./routes/index');
-var pcRouter = require('./routes/pc');
-var mbRouter = require('./routes/mb');
+var preRouter = require('./routes/pre');
 
 
 var app = express();
@@ -33,21 +32,17 @@ app.use(function(req, res, next) {
   if (useragent.indexOf('Mobi')>0){
     res.locals.ismoble = true;  
     console.log("is_mobile=" + res.locals.ismoble);
-    
-    
   }
   else {
     res.locals.ismoble = false;
     console.log("is_mobile=" + res.locals.ismoble);
-    
-    
   }
   next();
 });
 
 app.use('/', indexRouter);
-app.use('/mb', mbRouter);
-app.use('/pc', pcRouter);
+app.use('/pre', preRouter);
+
 
 
 // catch 404 and forward to error handler
