@@ -81,7 +81,7 @@ exports.post_preregister = [
                 console.log("result=", results);
                 //insert into event_preregisterset event_id=?,  email=?,ip=?,country=?
                 if (results==undefined || results.length==0){
-                    var register_data = {event_id:16,nick_name:ipInfo.city, email:email,ip:req.connection.remoteAddress.replace('::ffff:',''),country:ipInfo.country};
+                    var register_data = {event_id:16,nick_name:ipInfo.city, email:email,ip:req.headers['x-forwarded-for'],country:ipInfo.country};
                     var query = connection.query('INSERT INTO event_preregister SET ?', register_data, function (error, xresults, fields) {
                         if (error) throw error;
                         //connection.end();
