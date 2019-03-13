@@ -97,7 +97,7 @@ exports.post_preregister = [
                                 from: '"🌊 海島紀元遊戲營運團隊 🍖 " <no-reply@longeplay.com.tw>', // sender address
                                 to: email, // list of receivers
                                 subject: "海島紀元預註冊成功通知 ✔", // Subject line
-                                html: html_template // html body
+                                text: html_template // html body
                               };
                             
                               // send mail with defined transport object
