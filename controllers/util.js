@@ -41,4 +41,4 @@ function prereg_count(){
 
 }
 
-console.log(prereg_count());
+//console.log(prereg_count());
