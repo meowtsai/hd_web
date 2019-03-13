@@ -3,14 +3,15 @@ html(lang="zh-Hant-TW")
   head
     meta(charset="utf-8")
     title= title
-    meta(name="description", content= keyword)
-    meta(name="keywords", content= keyword)
+    meta(name="description", content= meta_desc)
+    meta(name="keywords", content= meta_keyword)
     meta(name="viewport", content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1")
     link(rel="Shortcut Icon", type="image/x-icon", href="/dw_icon.ico")
     link(rel='stylesheet', href='css/reset.css')
     link(rel='stylesheet', href='css/fullpage.css')
     link(rel='stylesheet', href='css/pre_page_20190311.css')
-    script(src="https://cdn.rawgit.com/github/fetch/master/fetch.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js")
+    script(src="js/fetch.js")
     
   body
     #fb-root
@@ -36,84 +37,84 @@ html(lang="zh-Hant-TW")
             a(href="https://game.longeplay.com.tw/member/complete_agreement#data_use", target="blank") 隱私權政策
           input#pre_confirm_btn(type="submit", value="")
           #pre_close
-  #fullpage
-    .section#section0
-      #container_bg
-        .logo_icon
-        .media_link
-          ul
-            li
-              a(href="https://www.facebook.com/DownofislesGame" target="_blank" title="FB粉絲團")
-                img(src="img/fb.png" width="70px" height="70px" alt="")
-            li
-              a(href="", target="_blank", title="巴哈姆特討論版")
-                img(src="img/baha.png", width="70px", height="70px", alt="")
-            li
-              a(href="https://www.youtube.com/channel/UCO9NrDtRX-ETjn5LxOnzKsw/featured?view_as=subscriber" target="_blank" title="youtube頻道")
-                img(src="img/youtube.png" width="70px" height="70px" alt="")
-        #container
-          #banner
-          #pre_btn
-        .slide-down
-    .section#section1
-      .page2_bg
-        .pre_page_title= Number(user_registered).toLocaleString() + " "
-          .pre_page2_title
-        .pre_page2_secondtiltle
-        #pre_arrive_content2
-          #timeline
-            - var per_width = parseInt(percentage*13)
-            //- console.log("percentage",percentage);
-            #timleline_arrivepercent(style="width:"+ per_width + "px;")
-              i(style="left:260px")
-                span
-                  img(src="img/50000.png", alt="50000")
-              i(style="left:520px")
-                span
-                  img(src="img/100000.png", alt="100000")
-              i(style="left:780px")
-                span
-                  img(src="img/150000.png", alt="150000")
-              i(style="left:1040px")
-                span
-                  img(src="img/200000.png", alt="200000")
-              i(style="left:1300px;background-color:rgba(0,0,0,0)")
-                span
-                  img(src="img/250000.png", alt="250000")
-              .arrive_icon
-          #arrive_animal
-          each gift in gift_data
-            div(id="animal_arrive"+gift.id) 
-              .arrive_gift_detail(style=(gift.id==5?"width:210px":""))
-                i
-                  h1= gift.title
-                  each item in gift.items
-                    | #{item}
-                    br
-          - var stageTarget = {1:50000, 2:100000, 3:150000, 4:200000, 5:250000,6:1000000} //cnt >= 50000 && cnt < 100000
-          each arrVal,arrKey in stageTarget
-            div(id="arrive"+arrKey,class="ani"+arrKey,style=((user_registered>=arrVal&&user_registered<stageTarget[parseInt(arrKey)+1])?"":"display:none"))
-          #notice
-    .section#section2
-      .page2_bg
-        .pre_page_title
-          #pre_page3_title
-        .pre_page3_secondtiltle
-        iframe.page3_video(src="https://www.youtube.com/embed/_mu1jMOfu5I", frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
-        .footer
-          .footer_copyright
-            span.netease
-            a(href="https://game.longeplay.com.tw")
-              span.longe
-            span.service
-            span.footer_service
-            span.footer_service
-              p 台灣遊戲代理：龍邑股份有限公司
-                br 
-                | 線上回報：
-                a(href="https://game.longeplay.com.tw/service_quick?param_game_id=H54&site=long_e", target="_blank") 聯絡客服
-            .text
-              p 《海島紀元》依遊戲軟體分級管理辦法分類為普通級。 本應用遊戲為免費使用，內另有提供購買虛擬遊戲幣、物品等付費服務。 請依個人興趣、能力進行體驗，並注意遊戲時間避免沉迷。
+    #fullpage
+      .section#section0
+        #container_bg
+          .logo_icon
+          .media_link
+            ul
+              li
+                a(href="https://www.facebook.com/DownofislesGame" target="_blank" title="FB粉絲團")
+                  img(src="img/fb.png" width="70px" height="70px" alt="")
+              li
+                a(href="", target="_blank", title="巴哈姆特討論版")
+                  img(src="img/baha.png", width="70px", height="70px", alt="")
+              li
+                a(href="https://www.youtube.com/channel/UCO9NrDtRX-ETjn5LxOnzKsw/featured?view_as=subscriber" target="_blank" title="youtube頻道")
+                  img(src="img/youtube.png" width="70px" height="70px" alt="")
+          #container
+            #banner
+            #pre_btn
+          .slide-down
+      .section#section1
+        .page2_bg
+          .pre_page_title= Number(user_registered).toLocaleString() + " "
+            .pre_page2_title
+          .pre_page2_secondtiltle
+          #pre_arrive_content2
+            #timeline
+              - var per_width = parseInt(percentage*13)
+              //- console.log("percentage",percentage);
+              #timleline_arrivepercent(style="width:"+ per_width + "px;")
+                i(style="left:260px")
+                  span
+                    img(src="img/50000.png", alt="50000")
+                i(style="left:520px")
+                  span
+                    img(src="img/100000.png", alt="100000")
+                i(style="left:780px")
+                  span
+                    img(src="img/150000.png", alt="150000")
+                i(style="left:1040px")
+                  span
+                    img(src="img/200000.png", alt="200000")
+                i(style="left:1300px;background-color:rgba(0,0,0,0)")
+                  span
+                    img(src="img/250000.png", alt="250000")
+                .arrive_icon
+            #arrive_animal
+            each gift in gift_data
+              div(id="animal_arrive"+gift.id) 
+                .arrive_gift_detail(style=(gift.id==5?"width:210px":""))
+                  i
+                    h1= gift.title
+                    each item in gift.items
+                      | #{item}
+                      br
+            - var stageTarget = {1:50000, 2:100000, 3:150000, 4:200000, 5:250000,6:1000000} //cnt >= 50000 && cnt < 100000
+            each arrVal,arrKey in stageTarget
+              div(id="arrive"+arrKey,class="ani"+arrKey,style=((user_registered>=arrVal&&user_registered<stageTarget[parseInt(arrKey)+1])?"":"display:none"))
+            #notice
+          .slide-down
+      .section#section2
+        .page2_bg
+          .pre_page_title
+            #pre_page3_title
+          .pre_page3_secondtiltle
+          iframe.page3_video(src="https://www.youtube.com/embed/_mu1jMOfu5I", frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+          .footer
+            .footer_copyright
+              span.netease
+              a(href="https://game.longeplay.com.tw")
+                span.longe
+              span.service
+              span.footer_service
+                p 台灣遊戲代理：龍邑股份有限公司
+                  br 
+                  | 線上回報：
+                  a(href="https://game.longeplay.com.tw/service_quick?param_game_id=H54&site=long_e", target="_blank") 聯絡客服
+              .text
+                p 《海島紀元》依遊戲軟體分級管理辦法分類為普通級。 本應用遊戲為免費使用，內另有提供購買虛擬遊戲幣、物品等付費服務。 請依個人興趣、能力進行體驗，並注意遊戲時間避免沉迷。
 
 
 script(type="text/javascript", src="js/fullpage.js")

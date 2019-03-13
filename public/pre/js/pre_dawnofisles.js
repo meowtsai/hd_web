@@ -53,20 +53,22 @@ function submitData(){
     var email_address_input = document.getElementById('email_address');
     var chk_agree_input = document.getElementById('chk_agree');
     var data = {email_address: email_address_input.value, chk_agree: chk_agree_input.checked};
-    console.log(data);
+    //console.log(data);
 
-    fetch(url, {
-    method: 'POST', // or 'PUT'
-    body: JSON.stringify(data), // data can be `string` or {object}!
+    window.fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(data), 
     headers: new Headers({
         'Content-Type': 'application/json'
     })
-    }).then(res => res.json())
-    .catch(error => console.error('Error:', error))
-    .then(response => {
+    }).then(function(response) {
+        return response.json();
+      })
+    .catch(function(error) { console.error('Error:', error)})
+    .then( function(response){
         
         if (response.status=='success'){
-            console.log('Success:', response.status);
+            //console.log('Success:', response.status);
             //document.getElementById('pre_form').style.display='none';
             
             document.getElementById('pre_form').innerHTML = "<div class='success_msg'>" 
@@ -76,10 +78,10 @@ function submitData(){
                 + ' 期待與您共同開創海島新紀元！ <br />'
                 + '<input class="btnReset" type=button value="我知道了" onclick="javascript:location.reload();" /></div>';
         } else {
-            console.log(response.errors);
+            //console.log(response.errors);
             if (response.errors) {
-                    response.errors.forEach((error)=>{
-                        console.log(error.param);
+                    response.errors.forEach(function(error){
+                        //console.log(error.param);
                         var elem = document.getElementById(error.param);
                         elem.classList.add("is-invalid");
                         var feedbackDiv = document.createElement("div");
