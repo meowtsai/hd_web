@@ -37,10 +37,10 @@ exports.preregister = function(req,res,next){
 
     if (res.locals.ismoble)
     {
-        res.render('pre/preregister_mb', page_options);    
+        res.render('event/preregister_mb', page_options);    
     }
     else {
-        res.render('pre/preregister', page_options);    
+        res.render('event/preregister', page_options);    
     }
     
     
