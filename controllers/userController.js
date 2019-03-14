@@ -1,18 +1,15 @@
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 const moment  = require('moment');
-//const axios = require('axios');
 const connection = require('../models/dbconnection'); 
 const nodemailer = require("nodemailer");
 const smtp_server = require('../config')['smtp_server'];
-const fs = require('fs');
 const util = require('./util');
 
-//var async = require('async');
 
 
 exports.preregister = function(req,res,next){
-    console.log('called preregister');
+    //console.log('called preregister');
     const gift_data = [
         {id:1,title:"伐木大師的饋贈", items:["【石幣】*50,000","【伐木斧 · 2级】*1 ","【海民耐吃肉乾】 *3"] },
         {id:2,title:"挖礦大師的饋贈", items:["【石幣】*60,000","【礦鎬 · 2级】*1 ","【海民耐吃果乾】*3 ","【小份活力肉腿】*1"] },
@@ -59,7 +56,7 @@ exports.mb_preregister = function(req,res,next){
 
 
 exports.post_preregister = [
-    body('email_address').isEmail().normalizeEmail(),
+    body('email_address').isEmail().normalizeEmail().withMessage('* Email格式不正確'),
     body('chk_agree').equals('true').withMessage('請同意資料條款及隱私權政策'),
     sanitizeBody('email_address').trim().escape(),
     (req, res, next) => {
@@ -68,6 +65,7 @@ exports.post_preregister = [
         //console.log("-----threadId-------" ,connection.threadId);   
             
         if (!errors.isEmpty()) {
+            //console.log("-----errors-------" ,errors.array());   
             return res.status(422).json({ errors: errors.array(),status:'failed' });
             //res.render('pc/preregister', { title: '海島紀元預約登錄', keyword:'海島紀元' ,errors: errors.array()});
         }
@@ -85,7 +83,7 @@ exports.post_preregister = [
                     var query = connection.query('INSERT INTO event_preregister SET ?', register_data, function (error, xresults, fields) {
                         if (error) throw error;
                         //connection.end();
-                        console.log("results.insertId ", xresults.insertId );
+                        //console.log("results.insertId ", xresults.insertId );
                         /// EMAIL /////
                         if (process.env.NODE_ENV!='development') {
                             let transporter = nodemailer.createTransport(smtp_server);
@@ -103,7 +101,7 @@ exports.post_preregister = [
                               // send mail with defined transport object
                               let info = transporter.sendMail(mailOptions)
                             
-                              console.log("Message sent: %s", info.messageId);
+                              //console.log("Message sent: %s", info.messageId);
     
                               /// EMAIL /////
                         }
@@ -112,7 +110,7 @@ exports.post_preregister = [
 
                         return res.status(200).json({ errors: {}, status:'success',insid: xresults.insertId });
                     });
-                    console.log(query.sql); 
+                    //console.log(query.sql); 
                 }
                 else {
                     //connection.end();
@@ -120,7 +118,7 @@ exports.post_preregister = [
                 }
                 
             });
-            console.log(selQuery.sql); 
+            //console.log(selQuery.sql); 
         
         
         }

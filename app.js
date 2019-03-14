@@ -6,6 +6,7 @@ var logger = require('morgan');
 const expressip = require('express-ip');
 var indexRouter = require('./routes/index');
 var preRouter = require('./routes/pre');
+var helmet = require('helmet')
 
 
 var app = express();
@@ -20,7 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressip().getIpInfoMiddleware);
-
+app.use(helmet())
 
 
 // agent
@@ -41,7 +42,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/', indexRouter);
-app.use('/pre', preRouter);
+app.use('/event', preRouter);
 
 
 

@@ -45,7 +45,7 @@ html(lang="zh-Hant-TW")
               a(href="https://www.facebook.com/DownofislesGame" target="_blank" title="FB粉絲團")
                 img(src="img/fb.png" width="70px" height="70px" alt="")
             li
-              a(href="", target="_blank", title="巴哈姆特討論版")
+              a(href="https://forum.gamer.com.tw/A.php?bsn=36237", target="_blank", title="巴哈姆特討論版")
                 img(src="img/baha.png", width="70px", height="70px", alt="")
             li
               a(href="https://www.youtube.com/channel/UCO9NrDtRX-ETjn5LxOnzKsw/featured?view_as=subscriber" target="_blank" title="youtube頻道")
@@ -70,7 +70,7 @@ html(lang="zh-Hant-TW")
               each item in gift.items
                 br
                 | #{item}
-        - var stageTarget = {1:50000, 2:100000, 3:150000, 4:200000, 5:250000,6:1000000} //cnt >= 50000 && cnt < 100000
+        - var stageTarget = {1:50000, 2:100000, 3:150000, 4:200000, 5:250000,6:1000000} 
         each arrVal,arrKey in stageTarget
           div(id="arrive"+arrKey,style=((user_registered>=arrVal&&user_registered<stageTarget[parseInt(arrKey)+1])?"":"display:none"))
         #notice

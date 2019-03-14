@@ -1,6 +1,7 @@
 $(function(){
     var myFullpage = new fullpage('#fullpage', {
         anchors: ['firstPage', 'secondPage', '3rdPage'],
+        licenseKey: '5D87F452-1A864D8E-887AF68C-B578CC84',
        // sectionsColor: ['#C63D0F', '#1BBC9B', '#7E8F7C'],
         navigation: true,
         navigationPosition: 'right',
@@ -72,7 +73,7 @@ function submitData(){
             //document.getElementById('pre_form').style.display='none';
             
             document.getElementById('pre_form').innerHTML = "<div class='success_msg'>" 
-                + "親愛的準海民, <br/>感謝您的參與。<br /> 您的郵件地址："
+                + "親愛的準海民, <br/><br/>感謝您的參與。<br /> 您的郵件地址："
                 + data.email_address 
                 + ((response.registered?"<br />在<font color='red'>" + response.registered.create_time +"</font>":"" )) +'已經收入我們的拓荒者登記簿，<br />請耐心等待我們完成基礎建設。 <br />'
                 + ' 期待與您共同開創海島新紀元！ <br />'
@@ -83,7 +84,7 @@ function submitData(){
                     response.errors.forEach(function(error){
                         //console.log(error.param);
                         var elem = document.getElementById(error.param);
-                        elem.classList.add("is-invalid");
+                        elem.classList.add("invalid");
                         var feedbackDiv = document.createElement("div");
                         feedbackDiv.innerHTML=error.msg;
                         feedbackDiv.classList.add('invalid-feedback');

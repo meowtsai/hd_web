@@ -352,6 +352,11 @@ transform:rotate(360deg)
 	border:1px solid #977354;
 }
 
+.email_input:invalid {
+  border: 2px dashed red;
+}
+
+
 
 #pre_fb {
 	position: absolute;
@@ -965,12 +970,17 @@ transform:rotate(360deg)
 
 
 .invalid-feedback {
-	display: block;
+	position: absolute;
 	width: 100%;
 	margin-top: .25rem;
 	font-size: 80%;
 	color: #dc3545;
+	top: 270px;
+	left: 250px;
+	width: 259px;
+  height: 72px;
 }
+
 
 .success_msg {
 	position: absolute;

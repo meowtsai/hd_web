@@ -42,10 +42,10 @@ function submitData(){
             //document.getElementById('pre_form').style.display='none';
             
             document.getElementById('pre_form').innerHTML = "<div class='success_msg'>" 
-                + "親愛的準海民, <br/>感謝您的參與。<br /> 您的郵件地址："
+                + "親愛的準海民, <br/><br/>感謝您的參與。<br /> 您的郵件地址："
                 + data.email_address 
-                + ((response.registered?"<br />在<font color='red'>" + response.registered.create_time +"</font>":"" )) +'已經收入我們的拓荒者登記簿，<br />請耐心等待我們完成基礎建設。 <br />'
-                + ' 期待與您共同開創海島新紀元！ <br />'
+                + ((response.registered?"<br />在 <font color='red'>" + response.registered.create_time +"</font>":"" )) +'<br/>已經收入我們的拓荒者登記簿，<br />請耐心等待我們完成基礎建設。 <br />'
+                + '<br /> 期待與您共同開創海島新紀元！ <br />'
                 + '<input class="btnReset" type=button value="我知道了" onclick="javascript:location.reload();" /></div>';
         } else {
             //console.log(response.errors);

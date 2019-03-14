@@ -111,7 +111,7 @@ html, body {
 	position: absolute;
 	height: 30px;
 	top:635px;
-	left:170px;
+	left:140px;
 	padding-left:40px;
 	font-size: 22px;
 	color: grey;
@@ -481,6 +481,10 @@ transform:rotate(360deg)
 }
 .email_input:focus{
 	border:1px solid #977354;
+}
+
+.email_input:invalid {
+  border: 2px dashed red;
 }
 
 
@@ -974,11 +978,15 @@ transform:rotate(360deg)
 	margin-top: .25rem;
 	font-size: 80%;
 	color: #dc3545;
+	margin-left: 135px;
 }
 
+
+    
+    
 .success_msg {
 	position: absolute;
-	padding:3px 10px;
+	padding:3px 3px;
 	margin-right:20px;
 	font-size:1.6rem;
   left:90px;
@@ -997,10 +1005,11 @@ transform:rotate(360deg)
 	font-size:1.6rem;
 	font-weight: 200;
   border-radius: 10px;
-  margin-top:20px;
+  margin-top:50px;
 	padding:10px;
 	cursor: pointer;
 	position: absolute;
-	left:200px;
+	left:100px;
+	width:200px;
 }
 
