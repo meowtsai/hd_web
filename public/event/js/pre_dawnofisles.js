@@ -1,4 +1,10 @@
+jQuery(window).load(function(){  
+    jQuery("#loading_bg ").hide(0);
+    
+});
+
 $(function(){
+    //$("#loading_bg ").hide(0);
     var myFullpage = new fullpage('#fullpage', {
         anchors: ['firstPage', 'secondPage', '3rdPage'],
         licenseKey: '5D87F452-1A864D8E-887AF68C-B578CC84',
@@ -47,6 +53,9 @@ $(function(){
 //    });	
 	
 });
+
+
+
 
 function submitData(){
     event.preventDefault();
