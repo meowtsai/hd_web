@@ -26,6 +26,7 @@ exports.preregister = function(req,res,next){
     const target_count = 250000;
     const percentage = parseInt((user_registered/target_count)*100);
     //console.log("percentage server ", percentage)
+    
     page_options = {
         title,
         gift_data,

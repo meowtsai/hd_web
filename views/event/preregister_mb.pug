@@ -56,7 +56,7 @@ html(lang="zh-Hant-TW")
         #pre_btn
     
     .page2_bg
-      .pre_page_title= Number(user_registered).toLocaleString() + " "
+      .pre_page_title= (user_registered==0?" ❔ ":Number(user_registered).toLocaleString() + " ") 
         .pre_page2_title
       .pre_page2_secondtiltle
       #pre_arrive_content2

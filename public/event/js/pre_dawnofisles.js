@@ -6,7 +6,7 @@ jQuery(window).load(function(){
 $(function(){
     //$("#loading_bg ").hide(0);
     var myFullpage = new fullpage('#fullpage', {
-        anchors: ['firstPage', 'secondPage', '3rdPage'],
+        anchors: ['1', '2', '3'],
         licenseKey: '5D87F452-1A864D8E-887AF68C-B578CC84',
        // sectionsColor: ['#C63D0F', '#1BBC9B', '#7E8F7C'],
         navigation: true,

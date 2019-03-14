@@ -13,6 +13,11 @@ function prereg_count(){
     const hh_dist =config.hh_dist;
     const date_now = new Date();
     let day_x = parseInt((date_now - begin_date)/ (1000 * 60 * 60 * 24));
+    
+    if (date_now - begin_date <0){
+        return 0;
+    }
+    //console.log("date_now - begin_date:",date_now - begin_date )
     //console.log("目前天數:",day_x )
 
     var rtn_number = 0;
