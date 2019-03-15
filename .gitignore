@@ -2,9 +2,9 @@
 logs
 *.log
 npm-debug.log*
+testdb/
 node_modules/
 jspm_packages/
-testdb/
 source/
 config.js
 controllers/test_count.js
