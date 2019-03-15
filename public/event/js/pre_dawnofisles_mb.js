@@ -17,7 +17,7 @@ $(function(){
 			
 });
 
-function submitData(){
+function submitData(event){
     event.preventDefault();
     var url = 'post_preregister';
     var email_address_input = document.getElementById('email_address');

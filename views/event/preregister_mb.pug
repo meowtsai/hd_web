@@ -18,7 +18,7 @@ html(lang="zh-Hant-TW")
       #pre_form
         #pre_close
         #pre_form_title
-        form(action="", method="post" onsubmit="return submitData()")
+        form(action="", method="post" onsubmit="return submitData(event)")
           .pre_step.step1 1
           input.email_input(id="email_address", name="email_address" type="email", placeholder="請輸入電子郵件信箱" required)         
           .pre_step.step2 2

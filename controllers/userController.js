@@ -77,7 +77,7 @@ exports.post_preregister = [
             var email = req.body.email_address;
             const ipInfo = req.ipInfo;
             var selQuery = connection.query('SELECT email,create_time  FROM event_preregister where event_id=? and email=?',[16, email], function (error, results, fields) {
-                console.log("result=", results);
+                //console.log("result=", results);
                 //insert into event_preregisterset event_id=?,  email=?,ip=?,country=?
                 if (results==undefined || results.length==0){
                     var register_data = {event_id:16,nick_name:ipInfo.city, email:email,ip:req.headers['x-forwarded-for'],country:ipInfo.country};

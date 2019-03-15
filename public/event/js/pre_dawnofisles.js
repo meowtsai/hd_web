@@ -57,14 +57,15 @@ $(function(){
 
 
 
-function submitData(){
+function submitData(event){
+    //event.preventDefault();
     event.preventDefault();
     var url = 'post_preregister';
     var email_address_input = document.getElementById('email_address');
     var chk_agree_input = document.getElementById('chk_agree');
     var data = {email_address: email_address_input.value, chk_agree: chk_agree_input.checked};
     //console.log(data);
-
+    //return;
     window.fetch(url, {
     method: 'POST',
     body: JSON.stringify(data), 
