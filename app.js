@@ -6,6 +6,7 @@ var logger = require('morgan');
 const expressip = require('express-ip');
 var indexRouter = require('./routes/index');
 var preRouter = require('./routes/pre');
+var cakeRouter = require('./routes/cake');
 var helmet = require('helmet')
 
 
@@ -32,18 +33,18 @@ app.use(function(req, res, next) {
   
   if (useragent.indexOf('Mobi')>0){
     res.locals.ismoble = true;  
-    console.log("is_mobile=" + res.locals.ismoble);
+    //console.log("is_mobile=" + res.locals.ismoble);
   }
   else {
     res.locals.ismoble = false;
-    console.log("is_mobile=" + res.locals.ismoble);
+    //console.log("is_mobile=" + res.locals.ismoble);
   }
   next();
 });
 
 app.use('/', indexRouter);
 app.use('/event', preRouter);
-
+app.use('/cake', cakeRouter);
 
 
 // catch 404 and forward to error handler
