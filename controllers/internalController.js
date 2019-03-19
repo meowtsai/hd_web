@@ -41,7 +41,7 @@ var dailyData = async function ( ) {
     return dataList
   }
   var regionData = async function ( ) {
-    let sql = `Select country,nick_name,count(id) as count from event_preregister where event_id=? group by country,nick_name order by count(id) desc`
+    let sql = `Select country,count(id) as count from event_preregister where event_id=? group by country order by count(id) desc`
     let values = [16];
     let dataList = await query( sql, values )
     return dataList

@@ -30,11 +30,9 @@ html(lang="zh-Hant-TW")
                     thead
                         tr
                             th 國家
-                            th 城市
                             th 人數
                     tbody
                     each item in region_data
                         tr
                             td= item.country
-                            td= item.nick_name
                             td= item.count
