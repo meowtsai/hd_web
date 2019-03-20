@@ -1,6 +1,7 @@
 doctype html
 html(lang="zh-Hant-TW")
   head
+    script(async src="https://www.googletagmanager.com/gtag/js?id=UA-65559425-9")
     meta(charset="utf-8")
     title= title
     meta(name="description", content= meta_desc)
@@ -127,6 +128,11 @@ html(lang="zh-Hant-TW")
 script(type="text/javascript", src="js/fullpage.js")
 script(type="text/javascript", src="js/jquery-2.1.1.min.js")
 script(type="text/javascript", src="js/pre_dawnofisles.js")
+script.
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-65559425-9');
 
 
