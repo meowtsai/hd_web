@@ -89,6 +89,55 @@ right:20px;
 	margin-top: 20px;
 	
 }
+
+.left_nav {
+	position: absolute;
+	width:553px;
+	height: 458px;
+	left:0;
+	top:60%;
+	margin-top: -229px;
+	transition: 0.5s;
+	z-index: 150;
+	background: url(../img/left_nav_02_02.png) top center no-repeat;
+	
+}
+.left_nav_ani {
+	left:-470px;
+}
+.left_nav .btn {
+	display: block;
+	position: absolute;
+	width: 200px;
+	height: 59px;
+	background: url(../img/google_dl.png) top center no-repeat;
+	right:120px;
+	bottom: 30px;
+	cursor: pointer;
+}
+.left_nav .btn:hover{
+	opacity: 0.8;
+}
+
+.left_nav .slide_left_gugu {
+	position: absolute;
+	width:77px;
+	height:175px;
+	right:0;
+	top:145px;
+	cursor: pointer;
+}
+
+.gugueye {
+	position: absolute;
+	width: 58px;
+	height: 57px;
+	background: url(../img/gugueyes_03.png) top center;
+	left:20px;
+	top:14px;
+}
+
+
 .logo_icon {
 	position: absolute;
 	width: 350px;

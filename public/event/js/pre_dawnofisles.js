@@ -3,6 +3,13 @@ jQuery(window).load(function(){
     
 });
 
+function eyes_loop(){
+    for(var i=0;i<100;i++){
+    $(".gugueye").show(0).delay(Math.random()*500).hide(0).delay(Math.random()*8000);}	
+
+}
+eyes_loop();
+
 $(function(){
     //$("#loading_bg ").hide(0);
     var myFullpage = new fullpage('#fullpage', {
