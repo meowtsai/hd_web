@@ -8,6 +8,11 @@ function eyes_loop(){
     $(".gugueye").show(0).delay(Math.random()*500).hide(0).delay(Math.random()*8000);}	
 
 }
+
+$(".slide_left_gugu").click(function(){
+    $(".left_nav").toggleClass("left_nav_ani");
+});	
+
 eyes_loop();
 
 $(function(){
