@@ -26,7 +26,7 @@ exports.preregister = function(req,res,next){
     const target_count = 250000;
     const percentage = parseInt((user_registered/target_count)*100);
     //console.log("percentage server ", percentage)
-    
+    const GPlink ="https://play.google.com/store/apps/details?id=com.netease.hdjytw";
     page_options = {
         title,
         gift_data,
@@ -34,6 +34,7 @@ exports.preregister = function(req,res,next){
         meta_desc,
         user_registered,
         percentage,
+        GPlink,
     };
 
     if (res.locals.ismoble)
