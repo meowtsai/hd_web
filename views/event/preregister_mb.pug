@@ -60,7 +60,8 @@ html(lang="zh-Hant-TW")
         .logo_icon
         #banner
         #pre_btn
-        a#cbtest_btn(href=GPlink, target="_blank")
+        if (display_cb)
+          a#cbtest_btn(href=GPlink, target="_blank")
     
     .page2_bg
       .pre_page_title= (user_registered==0?" ❔ ":Number(user_registered).toLocaleString() + " ") 
