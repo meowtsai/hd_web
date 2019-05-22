@@ -1,0 +1,39 @@
+doctype html
+html(lang="zh-Hant-TW")
+    head
+        meta(charset="utf-8")
+        title= title
+        meta(name="description", content= meta_desc)
+        meta(name="keywords", content= meta_keyword)
+        meta(name="viewport", content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1")
+        link(rel="Shortcut Icon", type="image/x-icon", href="/dw_icon.ico")
+        link(rel='stylesheet', href='/css/reset.css')
+        link(rel='stylesheet', href='/css/news_page.css')
+    body
+        include ../includes/head.pug
+        #back-to-top
+        .news_page_bg
+            .news_page_position
+                a(href="/news")
+                    .back_to_list_outer
+                        .back_to_list(href="/news")
+                if (news_item)
+                    .news_page_content_sort #{news_type[news_item.type]}
+                    .news_page_content_time #{moment(news_item.start_time).format("YYYY-MM-DD")}
+                    .news_page_content_title #{news_item.title}
+                    .news_page_content
+                        | !{news_item.content}
+                else
+                    .news_page_content_time
+                    .news_page_content_title
+                    .news_page_content
+                        | 文章不存在
+
+script(type="text/javascript", src="/js/jquery-2.1.1.min.js")
+script(type="text/javascript", src="/js/news_detail.js")
+script.
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-65559425-9');
