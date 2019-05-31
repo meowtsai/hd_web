@@ -82,7 +82,7 @@ var swiper_section4 = new Swiper ('#swiper_section4', {
     
   });  	
 	//section4 
-	var sct5_menu = ['採集', '寵物契約技', '部落戰','騎寵','角鬥聯賽','鉤索','釣魚','灘頭陣線'];
+	var sct5_menu = ['採集資原', '寵物契約技', '部落戰','騎寵大師賽','角鬥聯賽','鉤索大作戰','魚王挑戰賽','灘頭陣線'];
 	var sct5_num=['mb_sc5icon_1.png','mb_sc5icon_2.png','mb_sc5icon_3.gif','mb_sc5icon_4.gif','mb_sc5icon_5.gif','mb_sc5icon_6.gif','mb_sc5icon_7.gif','mb_sc5icon_8.gif'];
 	var swiper_section5 = new Swiper ('#swiper_section5', {	
     loop: true, // 循环模式选项

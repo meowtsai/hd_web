@@ -896,7 +896,11 @@ body.compensate-for-scrollbar {
 .section2_swiper_newsphoto_bottomnav_txt {
 	line-height: 35px;
 	color: white;
+	width: 65%;
 	font-size:15px;
 	text-align: left;
 	text-indent: 10px;
+	overflow: hidden;
+	white-space:nowrap;
+	text-overflow: ellipsis;
 }

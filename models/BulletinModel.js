@@ -18,7 +18,7 @@ const BulletinModel = {
   },
   get_list: async (game_id, type, limit, offset) => {
     sql =
-      "select id, title,type,create_time, start_time,(case when SUBSTRING(MID(content,instr(content,'src=')+5,84),1,4)='http' then  MID(content,instr(content,'src=')+5,84) else null end) as hero_image,MID(content,1,100) as preview_content from bulletins where game_id=? and priority >0 and now() between start_time and end_time ";
+      "select id, title,type,create_time, start_time,(case when SUBSTRING(MID(content,instr(content,'src=')+5,84),1,4)='http' then  MID(content,instr(content,'src=')+5,84) else null end) as hero_image,MID(REPLACE(content,' ',''),1,150) as preview_content from bulletins where game_id=? and priority >0 and now() between start_time and end_time ";
     if (!isEmpty(type)) {
       sql += " and type=?";
     } else {

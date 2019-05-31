@@ -20,9 +20,15 @@ exports.home = async function(req, res, next) {
     title: config.title,
     meta_keyword: config.meta_keyword,
     meta_desc: config.meta_desc,
+    social_media: config.social_media,
     GPlink,
     news_group: [news, news_1, news_2, news_3],
     moment
   };
-  res.render("index/home", page_options);
+
+  if (res.locals.ismoble) {
+    res.render("index/home_mb", page_options);
+  } else {
+    res.render("index/home", page_options);
+  }
 };

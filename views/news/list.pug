@@ -17,8 +17,8 @@ html(lang="zh-Hant-TW")
                 source(src="img/video2.mp4",type="video/mp4")
             .fix_mask
         .news_box
-            .news_title
             .news_list_position
+                .news_title(style="display:none;")
                 .tab_wrapper.first_tab
                     ul.tab_list
                         li.active 最新
@@ -31,7 +31,7 @@ html(lang="zh-Hant-TW")
                                 ul
                                     each news_item in news_data
                                         li
-                                            a(href="/news/" + news_item.id,target="_blank")
+                                            a(href="/news/" + news_item.id)
                                                 .news_content_position
                                                     .news_inner
                                                         .news_title_text #{news_item.title}
@@ -42,6 +42,13 @@ html(lang="zh-Hant-TW")
                                                                 | !{striptags(news_item.preview_content)}
                                                     .news_sort #{news_type[news_item.type]}
                                                     .date_time #{moment(news_item.start_time).format("YYYY-MM-DD")}
+                .list_box
+                    ul
+                        li first
+                        li 1
+                        li 2
+                        li 3
+                        li Last
         .footer
             .footer_copyright
                 span.netease

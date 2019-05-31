@@ -1,0 +1,80 @@
+doctype html
+html(lang="zh-Hant-TW")
+    head
+        meta(charset="utf-8")
+        title= title
+        meta(name="description", content= meta_desc)
+        meta(name="keywords", content= meta_keyword)
+        meta(name="viewport", content="width=750, user-scalable=no")
+        link(rel="Shortcut Icon", type="image/x-icon", href="/dw_icon.ico")
+        link(rel='stylesheet', href='/css/reset.css')
+        link(rel='stylesheet', href='/css/tab_news_mb.css')
+        link(rel='stylesheet', href='/css/news_mb.css')
+    body
+        .top_nav
+            a(href="/")
+                .logo_icon
+            .media_link
+                ul
+                    each media in social_media
+                        li
+                            a(href=media.link target="_blank" title=media.title)
+                                img(src="img/"+media.image, alt=media.title)
+        .fix_bg
+        .news_box
+            .news_title
+            a(href="/")
+                .back_to_list_outer
+                    i
+                    | 返回
+            .news_list_position
+                .tab_wrapper.first_tab
+                    ul.tab_list
+                        li.active 最新
+                        li 新聞
+                        li 公告
+                        li 攻略
+                    .content_wrapper
+                        each news_data in news_group
+                            .tab_content
+                                ul
+                                    each news_item in news_data
+                                        li
+                                            a(href="/news/" + news_item.id)
+                                                .news_content_position
+                                                    .news_inner
+                                                        .news_title_text #{news_item.title}
+                                                        .news_content_text
+                                                            if(news_item.hero_image!==null)
+                                                                img(src=news_item.hero_image alt=news_item.title)
+                                                            else
+                                                                | !{striptags(news_item.preview_content)}
+                                                    .news_sort #{news_type[news_item.type]}
+                                                    .date_time #{moment(news_item.start_time).format("YYYY-MM-DD")}
+                .load_more
+
+        .footer
+            #back-to-top
+            .icon_outer
+                span.netease
+                a(href="https://game.longeplay.com.tw")
+                    span.longe
+                span.service
+            .cs_outer
+                span.footer_service
+                    a(href="https://game.longeplay.com.tw/service_quick?param_game_id=H54&site=long_e" target="_blank") 台灣遊戲代理：龍邑股份有限公司
+                        br
+                        | 線上回報：海島客服
+            .text
+                p 《海島紀元》依遊戲軟體分級管理辦法分類為普通級。本應用遊戲為免費使用，內另有提供購買虛擬遊戲幣、物品等付費服務。 請依個人興趣、能力進行體驗，並注意遊戲時間避免沉迷。
+
+
+script(src="/js/jquery-2.1.1.min.js")
+script(src="/js/jquery.multipurpose_tabcontent.js")
+script(type="text/javascript", src="/js/news_list_mb.js")
+script.
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-65559425-9');

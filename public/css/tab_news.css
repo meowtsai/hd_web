@@ -34,7 +34,7 @@ ul, li {
   border-bottom:white solid 2px;
 }
 .tab_wrapper > ul li:nth-child(1) {
-  margin-left:230px;
+  margin-left:0px;
 }
 
 .tab_wrapper > ul li {
@@ -46,12 +46,19 @@ ul, li {
   color:white;
   font-family: "Microsoft Yahei";
   line-height:50px;	
-  width: 60px;
+  width: 120px;
   text-align: center;
   margin-right:15px;
-  background: black;	
+  background:rgba(0,0,0,0.6);	
   border-radius: 10px 10px 0 0;
   font-weight: 600;
+}
+.tab_wrapper > ul li:nth-child(1) {
+  margin-left:118px;
+}
+.tab_wrapper > ul li:hover {
+  background: white;
+  color: #000;	
 }
 .second_tab > ul li {
   float: left;
@@ -68,6 +75,7 @@ ul, li {
  
 }
 .tab_wrapper > ul li.active {
+  opacity: 1;
    /*filter: grayscale(0%); 
   -webkit-filter: grayscale(0%); Safari 6.0 - 9.0 */
   color: black;	
@@ -104,11 +112,11 @@ ul, li {
 
 .first_tab .content_wrapper {
   float: left;
-  height:auto;
+  height:580px;
   border:0;
   box-sizing: border-box;
   overflow: hidden;
-  margin-top:0px;
+  margin-top:10px;
 }
 .tab_wrapper .content_wrapper .tab_content{	
 }
@@ -312,9 +320,5 @@ ul, li {
 /*# sourceMappingURL=style.css.map */
 
 
-
-.tab_list {
-	
-}
 
 

@@ -13,7 +13,7 @@ html(lang="zh-Hant-TW")
         link(rel='stylesheet', href='css/tab.css')
         link(rel='stylesheet', href='css/jquery.fancybox.css')
         link(rel='stylesheet', href='css/animate.min.css')        
-        link(rel='stylesheet', href='css/pre_page_20190517.css')
+        link(rel='stylesheet', href='css/pre_page_20190529.css')
         script(src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js")
     body
         .top_nav
@@ -34,18 +34,10 @@ html(lang="zh-Hant-TW")
                     a(href="#7") 冒險之旅
             .media_link
                 ul
-                    li
-                        a(href="https://www.facebook.com/DawnofislesGame" target="_blank" title="FB粉絲團")
-                            img(src="img/fb.png", alt="FB粉絲團")
-                    li
-                        a(href="https://discord.gg/uPK9uAN" target="_blank" title="Discord")
-                            img(src="img/Discord-Logo-White.png", alt="Discord")   
-                    li
-                        a(href="https://www.youtube.com/channel/UCO9NrDtRX-ETjn5LxOnzKsw/featured?view_as=subscriber" target="_blank" title="youtube頻道")
-                            img(src="img/youtube.png", alt="youtube頻道")
-                    li
-                        a(href="https://forum.gamer.com.tw/A.php?bsn=36237", target="_blank", title="巴哈姆特討論版")
-                            img(src="img/baha.png", alt="")
+                    each media in social_media
+                        li
+                            a(href=media.link target="_blank" title=media.title)
+                                img(src="img/"+media.image, alt=media.title)
         .go_top_right
         .video_bg
             .swiper-container#swiper_section1
@@ -80,97 +72,101 @@ html(lang="zh-Hant-TW")
                             .ob_download.tw_style
                                 .obdl_outer.tw
                                     .ob_dlmiddle
-                                        a.ob_qrcode(style="background:url(img/gr.ioi.hk.png) top center no-repeat;background-size:100% 100%;")
+                                        a.ob_qrcode(style="background:url(img/qr.ioi.tw.png) top center no-repeat;background-size:100% 100%;")
                                             .dl_text 掃描QR碼或選擇商店下載遊戲
                                         .threelink
-                                            a(href=""  target="_blank")
+                                            a(href="https://go.onelink.me/doyd?pid=longe"  target="_blank")
                                                 img(src="img/apple_dl.png"  alt="")
-                                            a(href=""  target="_blank")
+                                            a(href="https://go.onelink.me/doyd?pid=longe"  target="_blank")
                                                 img(src="img/google_dl.png"  alt="")
                             .ob_download.hk_style
                                 .obdl_outer.hk
                                     .ob_dlmiddle
-                                        a.ob_qrcode(style="background:url(img/gr.ioi.hk.png) top center no-repeat;background-size:100% 100%;")
+                                        a.ob_qrcode(style="background:url(img/qr.ioi.hk.png) top center no-repeat;background-size:100% 100%;")
                                             .dl_text 掃描QR碼或選擇商店下載遊戲
                                         .threelink
-                                            a(href=""  target="_blank")
+                                            a(href="https://go.onelink.me/5uW4?pid=longe"  target="_blank")
                                                 img(src="img/apple_dl.png"  alt="")
-                                            a(href=""  target="_blank")
+                                            a(href="https://go.onelink.me/5uW4?pid=longe"  target="_blank")
                                                 img(src="img/google_dl.png"  alt="")
                     .slide-down
                     .section0_video
-                        a(data-fancybox, href="https://www.youtube.com/watch?v=N6eJQQKuMeE", data-width="800", data-height="450")
+                        a(data-fancybox, href="https://youtu.be/wH6imgMfAnw", data-width="800", data-height="450")
                             .top_video
                                 .sc0_btn
                                 img(src="img/top_video_1.png", alt="")
-                        a(data-fancybox, href="https://www.youtube.com/watch?v=Ph5kkL_U5Xo", data-width="800", data-height="450")
+                        a(data-fancybox, href="https://youtu.be/4K9nYzTwPFg", data-width="800", data-height="450")
                             .top_video(style="margin-top: 10px;")
                                 .sc0_btn
                                 img(src="img/top_video_2.png", alt="")
             .section#section1
                 .setion_bg
-                    .section1_title.all_title
+                    .section1_title
                     .swiper_v_con_section1
                         #swiper-pagination_section1
                         #swiper-button-prev_section1
                         #swiper-button-next_section1
             .section#section2
                 .setion_bg
-                    .section2_title.all_title
                     .section2_content
-                        .section2_swiper_newsphoto
-                            .swiper-container#swiper_section2
-                                .swiper-wrapper
-                                    .swiper-slide
-                                        img(src="img/page1_bg.jpg", alt="",height="100%")
-                                    .swiper-slide
-                                        img(src="img/page_bg_origin.jpg", alt="",height="100%")
-                                    .swiper-slide
-                                        img(src="img/page_bg_all.jpg", alt="",height="100%")
-                            #swiper-pagination_section2
-                            .section2_swiper_newsphoto_bottomnav
-                                .section2_swiper_newsphoto_bottomnav_txt
-                        .section2_news
-                            .tab_wrapper.first_tab
-                                ul.tab_list
-                                    li.active 最新
-                                    li 新聞
-                                    li 公告
-                                    li 攻略
-                                a.news_more(target="blank", href="/news")
-                                .content_wrapper
-                                    each news_data in news_group
-                                        .tab_content
-                                            ul
-                                                each news_item in news_data
-                                                    li
-                                                        .news_width
-                                                            a(href="/news/" + news_item.id,target="_blank") #{news_item.title}
-                                                        span.date_time #{moment(news_item.start_time).format("YYYY-MM-DD")}
+                        .section2_content_inner
+                            .section2_title.all_title
+                            .section2_swiper_newsphoto
+                                .swiper-container#swiper_section2
+                                    .swiper-wrapper
+                                        .swiper-slide
+                                            a(href="", target="_blank")
+                                                img(src="img/news_2.jpg", alt="",height="100%")
+                                        .swiper-slide
+                                            a(href="", target="_blank")
+                                                img(src="img/news_1.jpg", alt="",height="100%")
+                                        .swiper-slide
+                                            a(href="", target="_blank")
+                                                img(src="img/news_3.jpg", alt="",height="100%")
+                                #swiper-pagination_section2
+                                .section2_swiper_newsphoto_bottomnav
+                                    .section2_swiper_newsphoto_bottomnav_txt 不僅僅是島嶼建造和MMO冒險 《海島紀元》iOS版本上線
+                            .section2_news
+                                .tab_wrapper.first_tab
+                                    ul.tab_list
+                                        li.active 最新
+                                        li 新聞
+                                        li 公告
+                                        li 攻略
+                                    a.news_more(target="blank", href="/news")
+                                    .content_wrapper
+                                        each news_data in news_group
+                                            .tab_content
+                                                ul
+                                                    each news_item in news_data
+                                                        li
+                                                            .news_width
+                                                                a(href="/news/" + news_item.id,target="_blank") #{news_item.title}
+                                                            span.date_time #{moment(news_item.start_time).format("YYYY-MM-DD")}
             .section#section3
                 .setion_bg
-                    .section3_title.all_title
                     .swiper_section3_position
+                        .section3_title.all_title
                         .swiper-container#swiper_section3
                             .swiper-wrapper
                                 .swiper-slide
-                                    img(src="img/page_bg_all.jpg",alt="",width="100%",height="100%")
+                                    img(src="img/swiper_sc2_1.jpg",alt="",width="100%",height="100%")
                                 .swiper-slide
-                                    img(src="img/page_bg_origin.jpg",alt="",width="100%",height="100%")
+                                    img(src="img/swiper_sc2_2.jpg",alt="",width="100%",height="100%")
                                 .swiper-slide
-                                    img(src="img/page1_bg.jpg",alt="",width="100%",height="100%")
+                                    img(src="img/swiper_sc2_3.jpg",alt="",width="100%",height="100%")
                                 .swiper-slide
-                                    img(src="img/page_bg_all.jpg",alt="",width="100%",height="100%")
+                                    img(src="img/swiper_sc2_4.jpg",alt="",width="100%",height="100%")
                                 .swiper-slide
-                                    img(src="img/page_bg_origin.jpg",alt="",width="100%",height="100%")
+                                    img(src="img/swiper_sc2_5.jpg",alt="",width="100%",height="100%")
                         #swiper-button-next_section3
                         #swiper-button-prev_section3
                         .swiper-pagination_section3_position
                             #swiper-pagination_section3
             .section#section4
                 .setion_bg
-                    .section4_title.all_title
                     .section4_swiper_position
+                        .section4_title.all_title
                         .section4_video
                             iframe.sc4_video(width="650",height="365",src="https://www.youtube.com/embed/Ph5kkL_U5Xo",frameborder="0",allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",allowfullscreen)
                         .swiper-container#swiper_section4
@@ -189,40 +185,41 @@ html(lang="zh-Hant-TW")
                         #swiper-button-next_section4
             .section#section5
                 .setion_bg
-                    .section5_title.all_title
                     .section5_content_position
-                        .sc5_gallery_left
-                            a(href="img/page1_bg.jpg",data-fancybox="images1",data-caption="111111")
-                                .section5_gallery_photo(style="background:url(img/page1_bg.jpg) center center no-repeat;width:465px;height: 185px;background-size:cover")
-                                    i.section5_gallery_photo_banner 111111
-                            div(style="width:150px;height:200px;float: left;")
-                                a(href="img/page_bg_mb.jpg",data-fancybox="images1",data-caption="22222")
-                                    .section5_gallery_photo(style="background:url(img/page_bg_mb.jpg) center center no-repeat;width:140px;height: 90px;background-size:cover;")
-                                        i.section5_gallery_photo_banner 22222
-                                a(href="img/arrive_animal.jpg",data-fancybox="images1",data-caption="3333333")
-                                    .section5_gallery_photo(style="background:url(img/arrive_animal.png) center center no-repeat;width:140px;height: 90px;background-size:cover;")
-                                        i.section5_gallery_photo_banner 3333333
-                            a(href="img/page_bg_mb.jpg",data-fancybox="images1",data-caption="44444444")
-                                .section5_gallery_photo(style="background:url(img/page_bg_mb.jpg) center center no-repeat;width:315px;height: 185px;float:right;background-size:cover;")
-                                    i.section5_gallery_photo_banner 44444444
-                        .sc5_gallery_right
-                            a(href="img/pre_arrive_bg_mb.jpg",data-fancybox="images1",data-caption="55555")
-                                .section5_gallery_photo(style="background:url(img/pre_arrive_bg_mb.jpg) center center no-repeat;width:250px;height:380px;background-size:cover;float: left")
-                                    i.section5_gallery_photo_banner 55555
-                            div(style="width:215px;height:400px;float:right")
-                                a(href="img/page_bg_mb.jpg",data-fancybox="images1",data-caption="666")
-                                    .section5_gallery_photo(style="background:url(img/page_bg_mb.jpg) center center no-repeat;width:205px;height:125px;background-size:cover")
-                                        i.section5_gallery_photo_banner 6666
-                                a(href="img/banner2_bd532ed.jpg",data-fancybox="images1",data-caption="777")
-                                    .section5_gallery_photo(style="background:url(img/banner2_bd532ed.jpg) center center no-repeat;width:205px;height:122px;background-size:cover;")
-                                        i.section5_gallery_photo_banner 7777
-                                a(href="img/banner2_bd532ed.jpg",data-fancybox="images1",data-caption="888")
-                                    .section5_gallery_photo(style="background:url(img/banner2_bd532ed.jpg) center center no-repeat;width:205px;height:122px;background-size:cover;")
-                                        i.section5_gallery_photo_banner 8888
+                        div(style="position: absolute;width: 950px;height: 600px;")
+                            .section5_title.all_title
+                            .sc5_gallery_left
+                                a(href="img/fun_play1.jpg",data-fancybox="images1",data-caption="採集資源")
+                                    .section5_gallery_photo(style="background:url(img/fun_play1.jpg) center center no-repeat;width:465px;height: 185px;background-size:cover")
+                                        i.section5_gallery_photo_banner 採集資源
+                                div(style="width:150px;height:200px;float: left;")
+                                    a(href="img/fun_play2.jpg",data-fancybox="images1",data-caption="寵物契約技")
+                                        .section5_gallery_photo(style="background:url(img/fun_play2.jpg) center center no-repeat;width:140px;height: 90px;background-size:cover;")
+                                            i.section5_gallery_photo_banner 寵物契約技
+                                    a(href="img/fun_play3.jpg",data-fancybox="images1",data-caption="騎寵大師賽")
+                                        .section5_gallery_photo(style="background:url(img/fun_play3.jpg) center center no-repeat;width:140px;height: 90px;background-size:cover;")
+                                            i.section5_gallery_photo_banner 騎寵大師賽
+                                a(href="img/fun_play4.jpg",data-fancybox="images1",data-caption="部落戰")
+                                    .section5_gallery_photo(style="background:url(img/fun_play4.jpg) center center no-repeat;width:315px;height: 185px;float:right;background-size:cover;")
+                                        i.section5_gallery_photo_banner 部落戰
+                            .sc5_gallery_right
+                                a(href="img/fun_play5.jpg",data-fancybox="images1",data-caption="角鬥聯賽")
+                                    .section5_gallery_photo(style="background:url(img/fun_play5.jpg) center center no-repeat;width:250px;height:380px;background-size:cover;float: left")
+                                        i.section5_gallery_photo_banner 角鬥聯賽
+                                div(style="width:215px;height:400px;float:right")
+                                    a(href="img/fun_play6.jpg",data-fancybox="images1",data-caption="鉤索大作戰")
+                                        .section5_gallery_photo(style="background:url(img/fun_play6.jpg) center center no-repeat;width:205px;height:125px;background-size:cover")
+                                            i.section5_gallery_photo_banner 鉤索大作戰
+                                    a(href="img/fun_play7.jpg",data-fancybox="images1",data-caption="魚王挑戰賽")
+                                        .section5_gallery_photo(style="background:url(img/fun_play7.jpg) center center no-repeat;width:205px;height:122px;background-size:cover;")
+                                            i.section5_gallery_photo_banner 魚王挑戰賽
+                                    a(href="img/fun_play8.jpg",data-fancybox="images1",data-caption="灘頭陣線")
+                                        .section5_gallery_photo(style="background:url(img/fun_play8.jpg) center center no-repeat;width:205px;height:122px;background-size:cover;")
+                                            i.section5_gallery_photo_banner 灘頭陣線
             .section#section6
-                .setion_bg
-                    .section6_title.all_title
+                .setion_bg(style="min-height: calc(100vh - 80px)")
                     .section6_news
+                        .section6_title.all_title
                         .tab_wrapper.second_tab
                             ul.tab_list
                                 li.active 原畫
@@ -233,39 +230,39 @@ html(lang="zh-Hant-TW")
                                 .tab_content.active
                                     .section6_content_position
                                         .sc6_gallery_left
-                                            a(href="img/sec6_bg_water.png", data-fancybox="images1", data-caption="111111")
-                                                .section5_gallery_photo(style="background:url(img/sec6_bg_water.png) center center no-repeat;width:575px;height:390px;background-size:cover;")
-                                                    i.section5_gallery_photo_banner 111111
+                                            a(href="img/sc6_img_1_1.jpg", data-fancybox="images2", data-caption="圖1")
+                                                .section5_gallery_photo(style="background:url(img/sc6_img_1_1.jpg) center center no-repeat;width:575px;height:390px;background-size:cover;")
+                                                    i.section5_gallery_photo_banner 圖1
                                         .sc6_gallery_right
-                                            a(href="img/pre_arrive_bg_mb.png", data-fancybox="images1", data-caption="2222222222")
-                                                .section5_gallery_photo(style="background:url(img/pre_arrive_bg_mb.jpg) center center no-repeat;width:355px;height:180px;background-size:cover;float:right;")
-                                                    i.section5_gallery_photo_banner 2222222222
+                                            a(href="img/sc6_img_2_1.jpg", data-fancybox="images2", data-caption="圖2")
+                                                .section5_gallery_photo(style="background:url(img/sc6_img_2_1.jpg) center center no-repeat;width:355px;height:180px;background-size:cover;float:right;")
+                                                    i.section5_gallery_photo_banner 圖2
                                             div(style="width:370px;height:210px;float:right;")
-                                                a(href="img/page_bg_mb.jpg",data-fancybox="images1",data-caption="3333333333")
-                                                    .section5_gallery_photo(style="background:url(img/page_bg_mb.jpg) center center no-repeat;width:205px;height:200px;background-size:cover;float:left;left:5px; ")
-                                                        i.section5_gallery_photo_banner 333333333
-                                                a(href="img/banner2_bd532ed.jpg",data-fancybox="images1",data-caption="44444444444")
-                                                    .section5_gallery_photo(style="background:url(img/banner2_bd532ed.jpg) center center no-repeat;width:140px;height:95px;background-size:cover;float:right; ")
-                                                        i.section5_gallery_photo_banner 44444444444
-                                                a(href="img/page_bg_mb.jpg",data-fancybox="images1",data-caption="55555555")
-                                                    .section5_gallery_photo(style="background:url(img/banner2_bd532ed.jpg) center center no-repeat;width:140px;height:95px;background-size:cover;float:right;")
-                                                        i.section5_gallery_photo_banner 5555555555
+                                                a(href="img/sc6_img_3_1.jpg",data-fancybox="images2",data-caption="圖3")
+                                                    .section5_gallery_photo(style="background:url(img/sc6_img_3_1.jpg) center center no-repeat;width:205px;height:200px;background-size:cover;float:left;left:5px; ")
+                                                        i.section5_gallery_photo_banner 圖3
+                                                a(href="img/sc6_img_4_1.jpg",data-fancybox="images2",data-caption="圖4")
+                                                    .section5_gallery_photo(style="background:url(img/sc6_img_4_1.jpg) center center no-repeat;width:140px;height:95px;background-size:cover;float:right; ")
+                                                        i.section5_gallery_photo_banner 圖4
+                                                a(href="img/sc6_img_5_1.jpg",data-fancybox="images2",data-caption="圖5")
+                                                    .section5_gallery_photo(style="background:url(img/sc6_img_5_1.jpg) center center no-repeat;width:140px;height:95px;background-size:cover;float:right;")
+                                                        i.section5_gallery_photo_banner 圖5
                                 .tab_content
                                 .tab_content
-                    .slide-up
-                    .footer
-                        .footer_copyright
-                            span.netease
-                            a(href="https://game.longeplay.com.tw")
-                                span.longe
-                            span.service
-                            span.footer_service
-                                p 台灣遊戲代理：龍邑股份有限公司
-                                    br 
-                                    | 線上回報：
-                                    a(href="https://game.longeplay.com.tw/service_quick?param_game_id=H54&site=long_e", target="_blank") 聯絡客服
-                            .text
-                                p 《海島紀元》依遊戲軟體分級管理辦法分類為普通級。 本應用遊戲為免費使用，內另有提供購買虛擬遊戲幣、物品等付費服務。 請依個人興趣、能力進行體驗，並注意遊戲時間避免沉迷。
+                    
+                .footer
+                    .footer_copyright
+                        span.netease
+                        a(href="https://game.longeplay.com.tw")
+                            span.longe
+                        span.service
+                        span.footer_service
+                            p 台灣遊戲代理：龍邑股份有限公司
+                                br 
+                                | 線上回報：
+                                a(href="https://game.longeplay.com.tw/service_quick?param_game_id=H54&site=long_e", target="_blank") 聯絡客服
+                        .text
+                            p 《海島紀元》依遊戲軟體分級管理辦法分類為普通級。 本應用遊戲為免費使用，內另有提供購買虛擬遊戲幣、物品等付費服務。 請依個人興趣、能力進行體驗，並注意遊戲時間避免沉迷。
 
 
 script(type="text/javascript", src="js/jquery-2.1.1.min.js")
@@ -283,10 +280,10 @@ script.
         afterLoad: function(origin, destination, direction){
             if(destination.index <2 ){
                 $('.go_top_right').css("opacity","0");
-                //$(".fix_mask").hide();
+                $(".fix_mask").fadeOut(200);
             } else {
-                    $('.go_top_right').css("opacity","1");
-                    //$(".fix_mask").show();
+                $('.go_top_right').css("opacity","1");
+                $(".fix_mask").fadeIn(200);
             }
             if(destination.index == 5){
                 sc5_ani.addClass("animated fadeInLeftBig faster");

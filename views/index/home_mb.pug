@@ -1,0 +1,186 @@
+doctype html
+html(lang="zh-Hant-TW")
+    head
+        meta(charset="utf-8")
+        title= title
+        meta(name="description", content= meta_desc)
+        meta(name="keywords", content= meta_keyword)
+        meta(name="viewport", content="width=750, user-scalable=no")
+        link(rel="Shortcut Icon", type="image/x-icon", href="/dw_icon.ico")
+        link(rel='stylesheet', href='css/reset.css')
+        link(rel='stylesheet', href='css/fullpage.css')
+        link(rel='stylesheet', href='css/swiper.css')
+        link(rel='stylesheet', href='css/tab_mb.css')
+        link(rel='stylesheet', href='css/jquery.fancybox.css')
+        link(rel='stylesheet', href='css/animate.min.css')        
+        link(rel='stylesheet', href='css/pre_page_mb_201900529.css')
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js")
+    body
+        .top_nav
+            .logo_icon
+            .media_link
+                ul
+                    each media in social_media
+                        li
+                            a(href=media.link target="_blank" title=media.title)
+                                img(src="img/"+media.image, alt=media.title)
+        .fix_bg
+            .fix_mask
+        #fullpage(style="position:relative;z-index: 30;")
+            .section.fp-auto-height#section0
+                #container_bg
+                    .section0_bg_animation
+                    .section0_mask
+                    #container
+                        .top_icon
+                        #banner
+                        .section0_video
+                            a(data-fancybox href="https://youtu.be/wH6imgMfAnw" data-width="700" data-height="395")
+                                .top_video
+                        .download-container
+                            a(href="https://go.onelink.me/doyd?pid=longe")
+                                .ob_download.tw_style
+                            a(href="https://go.onelink.me/5uW4?pid=longe")
+                                .ob_download.hk_style
+                    .slide-down
+            .section.test_hide.fp-auto-height#section1
+                .setion1_bg
+                    .all_title.section2_title
+                    .section2_swiper_newsphoto
+                        .swiper-container#swiper_section2
+                            .swiper-wrapper
+                                .swiper-slide
+                                    a(href="#")
+                                        .seciotn2_banner
+                                            img(src="img/news_2.jpg" alt="" width="auto" height="100%")
+                                            .section2_swiper_newsphoto_bottomnav
+                                                .section2_swiper_newsphoto_title 新聞
+                                                .section2_swiper_newsphoto_txt 不僅僅是島嶼建造和MMO冒險 《海島紀元》iOS版本上線
+                                                .section2_swiper_newsphoto_time 2019-05-30
+                                .swiper-slide
+                                    a(href="#")
+                                        .seciotn2_banner
+                                            img(src="img/news_1.jpg" alt="" width="auto" height="100%")
+                                            .section2_swiper_newsphoto_bottomnav
+                                                .section2_swiper_newsphoto_title 新聞
+                                                .section2_swiper_newsphoto_txt 聯動熊本熊！島嶼冒險遊戲《海島紀元》將於5月30日清新首發
+                                                .section2_swiper_newsphoto_time 2019-05-30
+                                .swiper-slide
+                                    a(href="#")
+                                        .seciotn2_banner
+                                            img(src="img/news_3.jpg" alt="" width="auto" height="100%")
+                                            .section2_swiper_newsphoto_bottomnav
+                                                .section2_swiper_newsphoto_title 新聞
+                                                .section2_swiper_newsphoto_txt 超不正經の島嶼冒險遊戲《海島紀元》即將推出
+                                                .section2_swiper_newsphoto_time 2019-05-30
+                    #swiper-pagination_section2
+                    .section2_news
+                        .tab_wrapper.mb_tab
+                            ul.tab_list
+                                li.active 最新
+                                li 新聞
+                                li 公告
+                                li 攻略
+                            a.news_more(href="/news")
+                            .content_wrapper
+                                each news_data in news_group
+                                    .tab_content.active
+                                        ul
+                                            each news_item in news_data
+                                                li
+                                                    .news_width
+                                                        a(href="/news/" + news_item.id,target="_blank") #{news_item.title}
+                                                        span.date_time #{moment(news_item.start_time).format("YYYY-MM-DD")}
+            .section.test_hide.fp-auto-height#section2
+                .setion2_bg
+                    .section3_title.all_title
+                    .swiper_section3_position
+                        .swiper-container#swiper_section3
+                            .swiper-wrapper
+                                each sc3_img in [1, 2, 3, 4, 5]
+                                    .swiper-slide
+                                        .section3_photo
+                                            .section3_photo_img
+                                                img(src="img/swiper_sc2_" + sc3_img + ".jpg",alt="", width="100%", height="100%")
+                        .swiper-pagination_section3_position
+                            #swiper-pagination_section3
+            .section.test_hide.fp-auto-height#section3
+                .setion3_bg
+                    .section4_title.all_title
+                    .section4_video(onclick="javascript:alert('敬請期待');")
+                        .link_video_btn
+                        iframe.sc4_video(style="display:none;",width="650", height="365", src="https://www.youtube.com/embed/Ph5kkL_U5Xo",  frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+                    .section4_swiper_position
+                        .swiper-container#swiper_section4
+                            .swiper-wrapper
+                                each sc4_img in [1, 2, 3, 4, 5]
+                                    .swiper-slide
+                                        img(src="img/sc4_"+ sc4_img +".png" ,width="100%", height="100%", alt="")
+                    #swiper-pagination_section4
+            .section#section4
+                .setion4_bg
+                    .section5_title.all_title
+                    #swiper-button-next_section5
+                    #swiper-button-prev_section5
+                    .swiper-pagination_section4_position_icon_outer
+                    .swiper-pagination_section4_position
+                        #swiper-pagination_section5
+                    .swiper_section5_position
+                        .swiper-container#swiper_section5
+                            .swiper-wrapper
+                                each caption, index in {1:'採集資原',2:'寵物契約技',3:'部落戰',4:'騎寵大師賽',5:'角鬥聯賽',6:'鉤索大作戰',7:'魚王挑戰賽',8:'灘頭陣線'}
+                                    .swiper-slide
+                                        a(href="img/fun_play"+ index +".jpg",data-fancybox="images1",data-caption=caption)
+                                            img(src="img/mb_sc5_"+ index +".png", alt="", width="100%", height="100%")
+                    .slide-up
+                    .footer
+                        .icon_outer
+                            span.netease
+                            a(href="https://game.longeplay.com.tw")
+                                span.longe
+                            span.service
+                        .cs_outer
+                            .footer_service
+                                a(href="https://game.longeplay.com.tw/service_quick?param_game_id=H54&site=long_e", target="_blank") 台灣遊戲代理：龍邑股份有限公司
+                                    br
+                                    | 線上回報：海島客服
+                        .text
+                            p 《海島紀元》依遊戲軟體分級管理辦法分類為普通級。本應用遊戲為免費使用，內另有提供購買虛擬遊戲幣、物品等付費服務。 請依個人興趣、能力進行體驗，並注意遊戲時間避免沉迷。
+
+script(type="text/javascript", src="js/jquery-2.1.1.min.js")
+script(type="text/javascript", src="js/fullpage.min.js")
+
+script.
+    var sc3_ani=$("#swiper_section3");
+    var sc4_ani=$("#swiper_section4");
+    var sc5_ani=$("#swiper_section5");
+    var myFullpage = new fullpage('#fullpage', {
+        licenseKey: '5D87F452-1A864D8E-887AF68C-B578CC84',
+        anchors: ['1', '2', '3', '4', '5', '6','7'],
+        scrollingSpeed: 500,
+        autoScrolling:false,
+        afterLoad: function(origin, destination, direction){
+            if(destination.index == 2){
+                sc3_ani.addClass("animated rubberBand fast");
+            } 
+            if(destination.index ==3){
+                sc4_ani.addClass("animated rubberBand fast");
+            } 
+            if(destination.index ==4){
+                sc5_ani.addClass("animated rubberBand fast");		 	
+            }  
+        } });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-65559425-9');
+  
+script(type="text/javascript", src="js/swiper.js")
+script(type="text/javascript", src="js/jquery.multipurpose_tabcontent.js")
+script(type="text/javascript", src="js/jquery.fancybox.js")
+script(type="text/javascript", src="js/pre_dawnofisles_mb.js")
+
+
+
+

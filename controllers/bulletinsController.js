@@ -23,13 +23,19 @@ exports.list = async function(req, res, next) {
     title: config.title + "- 新聞列表",
     meta_keyword: config.meta_keyword,
     meta_desc: config.meta_desc,
+    social_media: config.social_media,
     news_type: config.news_type,
     GPlink,
     news_group: [news, news_1, news_2, news_3],
     moment,
     striptags
   };
-  res.render("news/list", page_options);
+
+  if (res.locals.ismoble) {
+    res.render("news/list_mb", page_options);
+  } else {
+    res.render("news/list", page_options);
+  }
 };
 
 exports.detail = async function(req, res, next) {
@@ -50,14 +56,20 @@ exports.detail = async function(req, res, next) {
     meta_keyword: config.meta_keyword,
     meta_desc: config.meta_desc,
     news_type: config.news_type,
+    social_media: config.social_media,
     GPlink,
     news_item,
     moment,
     striptags
   };
+
   if (news_item === undefined || news_item === null) {
-    res.redirect("/news");
+    res.redirect("/news_mv");
   } else {
-    res.render("news/detail", page_options);
+    if (res.locals.ismoble) {
+      res.render("news/detail_mb", page_options);
+    } else {
+      res.render("news/detail", page_options);
+    }
   }
 };
