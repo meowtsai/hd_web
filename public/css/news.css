@@ -130,7 +130,7 @@ a {
 .news_list_position {
   position: relative;
   width: 1000px;
-  height: 800px;
+  height: 700px;
   z-index: 20;
   overflow: hidden;
   transform: scale(0.95);

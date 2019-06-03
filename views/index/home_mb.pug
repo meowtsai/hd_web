@@ -50,29 +50,29 @@ html(lang="zh-Hant-TW")
                         .swiper-container#swiper_section2
                             .swiper-wrapper
                                 .swiper-slide
-                                    a(href="#")
+                                    a(href="/news/n/"+ headline[1].id)
                                         .seciotn2_banner
                                             img(src="img/news_2.jpg" alt="" width="auto" height="100%")
                                             .section2_swiper_newsphoto_bottomnav
                                                 .section2_swiper_newsphoto_title 新聞
-                                                .section2_swiper_newsphoto_txt 不僅僅是島嶼建造和MMO冒險 《海島紀元》iOS版本上線
-                                                .section2_swiper_newsphoto_time 2019-05-30
+                                                .section2_swiper_newsphoto_txt #{headline[1].title}
+                                                .section2_swiper_newsphoto_time #{headline[1].date}
                                 .swiper-slide
-                                    a(href="#")
+                                    a(href="/news/n/"+ headline[2].id)
                                         .seciotn2_banner
                                             img(src="img/news_1.jpg" alt="" width="auto" height="100%")
                                             .section2_swiper_newsphoto_bottomnav
                                                 .section2_swiper_newsphoto_title 新聞
-                                                .section2_swiper_newsphoto_txt 聯動熊本熊！島嶼冒險遊戲《海島紀元》將於5月30日清新首發
-                                                .section2_swiper_newsphoto_time 2019-05-30
+                                                .section2_swiper_newsphoto_txt #{headline[2].title}
+                                                .section2_swiper_newsphoto_time #{headline[2].date}
                                 .swiper-slide
-                                    a(href="#")
+                                    a(href="/news/n/"+ headline[3].id)
                                         .seciotn2_banner
                                             img(src="img/news_3.jpg" alt="" width="auto" height="100%")
                                             .section2_swiper_newsphoto_bottomnav
                                                 .section2_swiper_newsphoto_title 新聞
-                                                .section2_swiper_newsphoto_txt 超不正經の島嶼冒險遊戲《海島紀元》即將推出
-                                                .section2_swiper_newsphoto_time 2019-05-30
+                                                .section2_swiper_newsphoto_txt #{headline[3].title}
+                                                .section2_swiper_newsphoto_time #{headline[3].date}
                     #swiper-pagination_section2
                     .section2_news
                         .tab_wrapper.mb_tab
@@ -89,7 +89,7 @@ html(lang="zh-Hant-TW")
                                             each news_item in news_data
                                                 li
                                                     .news_width
-                                                        a(href="/news/" + news_item.id,target="_blank") #{news_item.title}
+                                                        a(href="/news/n/" + news_item.id,target="_blank") #{news_item.title}
                                                         span.date_time #{moment(news_item.start_time).format("YYYY-MM-DD")}
             .section.test_hide.fp-auto-height#section2
                 .setion2_bg

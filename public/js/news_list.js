@@ -18,7 +18,7 @@ $(function() {
   }
 
   const active_setting = {
-    active_tab: Number.parseInt(type) + 1
+    active_tab: parseInt(type) + 1
   };
   //console.log(active_setting);
 

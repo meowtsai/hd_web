@@ -115,13 +115,13 @@ html(lang="zh-Hant-TW")
                                 .swiper-container#swiper_section2
                                     .swiper-wrapper
                                         .swiper-slide
-                                            a(href="", target="_blank")
+                                            a(href="/news/n/" + headline[1], target="_blank")
                                                 img(src="img/news_2.jpg", alt="",height="100%")
                                         .swiper-slide
-                                            a(href="", target="_blank")
+                                            a(href="/news/n/"+ headline[2], target="_blank")
                                                 img(src="img/news_1.jpg", alt="",height="100%")
                                         .swiper-slide
-                                            a(href="", target="_blank")
+                                            a(href="/news/n/"+ headline[3], target="_blank")
                                                 img(src="img/news_3.jpg", alt="",height="100%")
                                 #swiper-pagination_section2
                                 .section2_swiper_newsphoto_bottomnav
@@ -141,7 +141,7 @@ html(lang="zh-Hant-TW")
                                                     each news_item in news_data
                                                         li
                                                             .news_width
-                                                                a(href="/news/" + news_item.id,target="_blank") #{news_item.title}
+                                                                a(href="/news/n/" + news_item.id,target="_blank") #{news_item.title}
                                                             span.date_time #{moment(news_item.start_time).format("YYYY-MM-DD")}
             .section#section3
                 .setion_bg

@@ -2,6 +2,15 @@ const moment = require("moment");
 const Bulletins = require("../models/BulletinModel");
 const config = require("../config");
 exports.home = async function(req, res, next) {
+  const ip_ok = config.insider_ip.filter(
+    ip => ip === req.headers["x-forwarded-for"]
+  );
+  if (ip_ok.length < 1) {
+    //inoffice
+    res.redirect("/event/preregister");
+    return;
+  }
+
   const game_id = config.game_id;
 
   //let day_x = parseInt((date_now - begin_date)/ (1000 * 60 * 60 * 24));
@@ -21,6 +30,7 @@ exports.home = async function(req, res, next) {
     meta_keyword: config.meta_keyword,
     meta_desc: config.meta_desc,
     social_media: config.social_media,
+    headline: config.headline,
     GPlink,
     news_group: [news, news_1, news_2, news_3],
     moment

@@ -112,13 +112,13 @@ script.
      function nextPage(newsType){
          let page = page_global[newsType].cur_page;
          page++;
-         console.log("page", page_global[newsType].cur_page)
+         
          
          if (page_global[newsType].cur_page >= page_global[newsType].total_pages){
              alert('已經到本分類最後一頁');
          }
       var url = '/news/get_news?newsType='+newsType+'&page=' + page;
-      console.log("newsType", newsType)
+      
       
       
       window.fetch(url, {

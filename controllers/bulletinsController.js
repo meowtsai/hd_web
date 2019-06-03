@@ -84,7 +84,7 @@ exports.detail = async function(req, res, next) {
   };
 
   if (news_item === undefined || news_item === null) {
-    res.redirect("/news_mv");
+    res.redirect("/news");
   } else {
     if (res.locals.ismoble) {
       res.render("news/detail_mb", page_options);

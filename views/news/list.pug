@@ -44,26 +44,12 @@ html(lang="zh-Hant-TW")
                                                     .date_time #{moment(news_item.start_time).format("YYYY-MM-DD")}
                                 if news_data.news_page>1
                                     .list_box
-                                        -n=(cur_type==key && cur_page >=4? cur_page-2: 0)
-                                        -m= (news_data.news_page<4)?news_data.news_page:(n+4);
-                                        ul
-                                            if cur_type==key && cur_page>=4
-                                                a(href="news?type="+ key+"&page=1")
-                                                    li 1
-                                                li(style='background:transparent;cursor:none;') ...
-                                                
-                                            while n < m
+                                        -n=0
+                                        ul      
+                                            while n < news_data.news_page
                                                 -n++
-                                                if cur_type==key && cur_page==n
-                                                    li(style='cursor:none') #{n}
-                                                else
-                                                    a(href="news?type="+ key+"&page="+n)
+                                                    a(onClick="return nextPage(" + key + ", " + n + ")")
                                                         li #{n}
-                                            if news_data.news_page>4 && n<news_data.news_page
-                                                li(style='background:transparent;cursor:none;') ...
-                                                a(href="news?type="+ key+"&page="+news_data.news_page)
-                                                    li #{news_data.news_page}
-                                            
                 
         .footer
             .footer_copyright
@@ -91,11 +77,18 @@ script.
 
   gtag('config', 'UA-65559425-9');
 
-  function nextPage(newsType, page){
+    var page_global = {
+      0:{'cur_page':1, 'total_pages':!{JSON.stringify(news_group[0].news_page)}},
+      1:{'cur_page':1, 'total_pages':!{JSON.stringify(news_group[1].news_page)}},
+      2:{'cur_page':1, 'total_pages':!{JSON.stringify(news_group[2].news_page)}},
+      3:{'cur_page':1, 'total_pages':!{JSON.stringify(news_group[3].news_page)}},
+  };
+  
+  var news_type= !{JSON.stringify(news_type)};
+  function nextPage(newsType, page){        
       var url = '/news/get_news?newsType='+newsType+'&page=' + page;
       //console.log("newsType", newsType)
-      //console.log("page", page)
-      console.log("event.target", event.target.parentNode)
+      
       
       window.fetch(url, {
         method: 'GET',
@@ -106,6 +99,52 @@ script.
             return response.json()
         })
         .catch(function(error) { console.error('Error:', error)})
-        .then(res => console.log(res))
+        .then(function(res){
+            //console.log("res", res);
+            page_global[newsType].cur_page=page;
+            
+            const news = res.msg;
+            var tabUL = document.getElementsByClassName("tab_content")[newsType].children[0];
+            tabUL.innerHTML ="";
+            for (var i = 0; i< news.length; i++) {
+                var new_li = document.createElement("li");
+                var new_anchor = document.createElement("a");
+                new_anchor.setAttribute('href', '/news/n/'+news[i].id );
+                new_li.appendChild(new_anchor)
+                
+                var newsDiv = document.createElement("div");
+                newsDiv.className="news_content_position";
+                new_anchor.appendChild(newsDiv);
+                var innerDiv = document.createElement("div");
+                innerDiv.className="news_inner";
+                var titleDiv = document.createElement("div");
+                titleDiv.className="news_title_text";
+                titleDiv.innerText=news[i].title
+                var contentDiv = document.createElement("div");
+                contentDiv.className="news_content_text";
+                contentDiv.innerHTML=news[i].hero_image===null?news[i].preview_content:"<img src='" + news[i].hero_image + "' />"
+
+                
+
+                var sortDiv = document.createElement("div");
+                sortDiv.className="news_sort";
+                sortDiv.innerText= news_type[news[i].type];
+                var dtDiv = document.createElement("div");
+                dtDiv.className="date_time";
+                dtDiv.innerText= news[i].start_date;
+                
+                newsDiv.appendChild(innerDiv);
+                newsDiv.appendChild(sortDiv);
+                newsDiv.appendChild(dtDiv);
+                innerDiv.appendChild(titleDiv);
+                innerDiv.appendChild(contentDiv);
+                
+                
+                tabUL.appendChild(new_li);
+
+                
+            }
+            return;
+        })
         
   }
