@@ -1,8 +1,6 @@
-
-
 .wrapper {
   max-width: 1200px;
-  margin: 20px  auto;
+  margin: 20px auto;
 }
 .wrapper > h1 {
   text-align: center;
@@ -10,12 +8,13 @@
 .wrapper > h1 span {
   border-bottom: 2px solid #49a4d9;
   display: inline-block;
-  padding: 0  10px 10px;
+  padding: 0 10px 10px;
   color: #49a4d9;
   transition: all 0.5s linear;
 }
 
-ul, li {
+ul,
+li {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -25,60 +24,58 @@ ul, li {
   display: inline-block;
   width: 100%;
   position: relative;
-	
 }
 .tab_wrapper > ul {
   clear: both;
   display: inline-block;
-  width:1000px;
-  border-bottom:white solid 2px;
+  width: 1000px;
+  border-bottom: white solid 2px;
 }
 .tab_wrapper > ul li:nth-child(1) {
-  margin-left:0px;
+  margin-left: 0px;
 }
 
 .tab_wrapper > ul li {
   float: left;
   cursor: pointer;
-  padding:2px 30px;	
-  font-size:22px;
+  padding: 2px 30px;
+  font-size: 22px;
   position: relative;
-  color:white;
+  color: white;
   font-family: "Microsoft Yahei";
-  line-height:50px;	
+  line-height: 50px;
   width: 120px;
   text-align: center;
-  margin-right:15px;
-  background:rgba(0,0,0,0.6);	
+  margin-right: 15px;
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 10px 10px 0 0;
   font-weight: 600;
 }
 .tab_wrapper > ul li:nth-child(1) {
-  margin-left:118px;
+  margin-left: 118px;
 }
 .tab_wrapper > ul li:hover {
   background: white;
-  color: #000;	
+  color: #000;
 }
 .second_tab > ul li {
   float: left;
   cursor: pointer;
-  padding:10px 20px;	
-  font-size:20px;
+  padding: 10px 20px;
+  font-size: 20px;
   position: relative;
-  color:white;
+  color: white;
   font-family: "Microsoft Yahei";
-  line-height:40px;	
+  line-height: 40px;
   width: 60px;
   text-align: center;
-  margin-right:15px;	
- 
+  margin-right: 15px;
 }
 .tab_wrapper > ul li.active {
   opacity: 1;
-   /*filter: grayscale(0%); 
+  /*filter: grayscale(0%); 
   -webkit-filter: grayscale(0%); Safari 6.0 - 9.0 */
-  color: black;	
+  color: black;
   background: white;
 }
 .tab_wrapper > ul li.active:after {
@@ -87,7 +84,7 @@ ul, li {
   bottom: -1px;
   height: 1px;
   left: 0;
-  background:#BAF97B ;
+  background: #baf97b;
   width: 100%;
 }
 .tab_wrapper .controller {
@@ -112,22 +109,20 @@ ul, li {
 
 .first_tab .content_wrapper {
   float: left;
-  height:580px;
-  border:0;
+  height: 680px;
+  border: 0;
   box-sizing: border-box;
   overflow: hidden;
-  margin-top:10px;
+  margin-top: 10px;
 }
-.tab_wrapper .content_wrapper .tab_content{	
+.tab_wrapper .content_wrapper .tab_content {
 }
-.tab_wrapper .content_wrapper .tab_content li{
-	float: left;
+.tab_wrapper .content_wrapper .tab_content li {
+  float: left;
 }
 
-.tab_wrapper .content_wrapper .tab_content>ul li{
-	
-	padding-left: 20px;
-
+.tab_wrapper .content_wrapper .tab_content > ul li {
+  padding-left: 20px;
 }
 .tab_wrapper .content_wrapper .tab_content.active {
   /* display: block; */
@@ -301,14 +296,14 @@ ul, li {
 }
 
 @media only screen and (max-width: 736px) {
-
   .tab_wrapper .content_wrapper {
     border: 0;
   }
   .tab_wrapper .content_wrapper .accordian_header {
     display: block;
   }
-  .tab_wrapper.left_side .content_wrapper, .tab_wrapper.right_side .content_wrapper {
+  .tab_wrapper.left_side .content_wrapper,
+  .tab_wrapper.right_side .content_wrapper {
     width: 100%;
     border-top: 0;
   }
@@ -318,7 +313,3 @@ ul, li {
 }
 
 /*# sourceMappingURL=style.css.map */
-
-
-
-

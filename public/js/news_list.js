@@ -3,8 +3,24 @@ $(function() {
     //console.log(i, val);
     tc.style.display = "none";
   });
+  var q = window.location.search.replace("?", "").split("&");
 
-  $(".first_tab").champ({
-    active_tab: "1"
-  });
+  let type = 0;
+  let page = 1;
+  for (let index = 0; index < q.length; index++) {
+    const element = q[index];
+    if (element.indexOf("type") > -1) {
+      type = element.split("=")[1];
+    }
+    if (element.indexOf("page") > -1) {
+      page = element.split("=")[1];
+    }
+  }
+
+  const active_setting = {
+    active_tab: Number.parseInt(type) + 1
+  };
+  //console.log(active_setting);
+
+  $(".first_tab").champ(active_setting);
 });

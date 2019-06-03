@@ -35,7 +35,7 @@ const BulletinModel = {
 
     values = [game_id, type, limit, offset];
     datarows = await query(sql, values);
-    console.log(sql, values);
+    //console.log(sql, values);
     return datarows;
   },
   get_count: async (game_id, type) => {

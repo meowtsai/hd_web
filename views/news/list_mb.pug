@@ -38,7 +38,7 @@ html(lang="zh-Hant-TW")
                         each news_data in news_group
                             .tab_content
                                 ul
-                                    each news_item in news_data
+                                    each news_item in news_data.news
                                         li
                                             a(href="/news/" + news_item.id)
                                                 .news_content_position
@@ -51,7 +51,7 @@ html(lang="zh-Hant-TW")
                                                                 | !{striptags(news_item.preview_content)}
                                                     .news_sort #{news_type[news_item.type]}
                                                     .date_time #{moment(news_item.start_time).format("YYYY-MM-DD")}
-                .load_more
+                .load_more#load_more
 
         .footer
             #back-to-top
@@ -78,3 +78,9 @@ script.
   gtag('js', new Date());
 
   gtag('config', 'UA-65559425-9');
+
+
+  document.getElementById("load_more").addEventListener("click", function(){
+    //document.getElementsByClassName("news_inner").innerHTML = "Hello World";
+    console.log("hi")
+    });

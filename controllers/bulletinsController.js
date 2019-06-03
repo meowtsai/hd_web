@@ -3,34 +3,70 @@ const moment = require("moment");
 const striptags = require("striptags");
 const Bulletins = require("../models/BulletinModel");
 const config = require("../config");
-
+const game_id = config.game_id;
+const PAGE_SIZE = 6;
+let page_options = {
+  title: config.title + "- 新聞列表",
+  meta_keyword: config.meta_keyword,
+  meta_desc: config.meta_desc,
+  social_media: config.social_media,
+  news_type: config.news_type,
+  moment,
+  striptags
+};
 exports.list = async function(req, res, next) {
-  const game_id = config.game_id;
+  let type = isNaN(req.query.type) ? 0 : req.query.type;
+  let page = isNaN(req.query.page) ? 1 : req.query.page;
 
-  //let day_x = parseInt((date_now - begin_date)/ (1000 * 60 * 60 * 24));
-  //console.log("starting", moment(new Date()).format("YYYY-MM-DD HH:mm:ss"));
-  const news = await Bulletins.get_list(game_id, "", 16, 0);
-  const news_1 = await Bulletins.get_list(game_id, 1, 16, 0);
-  const news_2 = await Bulletins.get_list(game_id, 2, 20, 0);
-  const news_3 = await Bulletins.get_list(game_id, 3, 16, 0);
-  //console.log("ending", moment(new Date()).format("YYYY-MM-DD HH:mm:ss"));
-  //console.log(news);
-
-  const GPlink =
-    "https://play.google.com/store/apps/details?id=com.netease.hdjytw";
+  const news = await Bulletins.get_list(
+    game_id,
+    "",
+    PAGE_SIZE,
+    type === "0" ? (page - 1) * 6 : 0
+  );
+  const news_page = Math.ceil(
+    (await Bulletins.get_count(game_id, "")) / PAGE_SIZE
+  );
+  const news_1 = await Bulletins.get_list(
+    game_id,
+    1,
+    PAGE_SIZE,
+    type === "1" ? (page - 1) * 6 : 0
+  );
+  const news_1_page = Math.ceil(
+    (await Bulletins.get_count(game_id, 1)) / PAGE_SIZE
+  );
+  const news_2 = await Bulletins.get_list(
+    game_id,
+    2,
+    PAGE_SIZE,
+    type === "2" ? (page - 1) * 6 : 0
+  );
+  const news_2_page = Math.ceil(
+    (await Bulletins.get_count(game_id, 2)) / PAGE_SIZE
+  );
+  const news_3 = await Bulletins.get_list(
+    game_id,
+    3,
+    PAGE_SIZE,
+    type === "3" ? (page - 1) * 6 : 0
+  );
+  const news_3_page = Math.ceil(
+    (await Bulletins.get_count(game_id, 3)) / PAGE_SIZE
+  );
 
   page_options = {
-    title: config.title + "- 新聞列表",
-    meta_keyword: config.meta_keyword,
-    meta_desc: config.meta_desc,
-    social_media: config.social_media,
-    news_type: config.news_type,
-    GPlink,
-    news_group: [news, news_1, news_2, news_3],
-    moment,
-    striptags
+    ...page_options,
+    news_group: {
+      0: { news, news_page },
+      1: { news: news_1, news_page: news_1_page },
+      2: { news: news_2, news_page: news_2_page },
+      3: { news: news_3, news_page: news_3_page }
+    },
+    cur_type: type,
+    cur_page: page
   };
-
+  //console.log(page_options.news_group);
   if (res.locals.ismoble) {
     res.render("news/list_mb", page_options);
   } else {
@@ -40,27 +76,11 @@ exports.list = async function(req, res, next) {
 
 exports.detail = async function(req, res, next) {
   const news_id = req.params.id;
-  const game_id = config.game_id;
 
-  //let day_x = parseInt((date_now - begin_date)/ (1000 * 60 * 60 * 24));
-  //console.log("starting", moment(new Date()).format("YYYY-MM-DD HH:mm:ss"));
   const news_item = await Bulletins.get_row(news_id);
-  //console.log("ending", moment(new Date()).format("YYYY-MM-DD HH:mm:ss"));
-  //console.log(news_item);
-
-  const GPlink =
-    "https://play.google.com/store/apps/details?id=com.netease.hdjytw";
-
   page_options = {
-    title: config.title + " - " + news_item.title,
-    meta_keyword: config.meta_keyword,
-    meta_desc: config.meta_desc,
-    news_type: config.news_type,
-    social_media: config.social_media,
-    GPlink,
-    news_item,
-    moment,
-    striptags
+    ...page_options,
+    news_item
   };
 
   if (news_item === undefined || news_item === null) {
@@ -72,4 +92,17 @@ exports.detail = async function(req, res, next) {
       res.render("news/detail", page_options);
     }
   }
+};
+
+exports.get_news = async (req, res, next) => {
+  //news/get_news?newsType=0&page=1
+  const newsType = req.query.newsType === "0" ? "" : req.query.newsType;
+  const news = await Bulletins.get_list(
+    game_id,
+    newsType,
+    PAGE_SIZE,
+    (req.query.page - 1) * PAGE_SIZE
+  );
+
+  return res.status(200).json({ status: 1, msg: news });
 };

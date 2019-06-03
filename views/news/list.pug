@@ -26,12 +26,12 @@ html(lang="zh-Hant-TW")
                         li 公告
                         li 攻略
                     .content_wrapper
-                        each news_data in news_group
+                        each news_data,key in news_group
                             .tab_content
                                 ul
-                                    each news_item in news_data
+                                    each news_item in news_data.news
                                         li
-                                            a(href="/news/" + news_item.id)
+                                            a(href="/news/n/" + news_item.id)
                                                 .news_content_position
                                                     .news_inner
                                                         .news_title_text #{news_item.title}
@@ -42,13 +42,29 @@ html(lang="zh-Hant-TW")
                                                                 | !{striptags(news_item.preview_content)}
                                                     .news_sort #{news_type[news_item.type]}
                                                     .date_time #{moment(news_item.start_time).format("YYYY-MM-DD")}
-                .list_box
-                    ul
-                        li first
-                        li 1
-                        li 2
-                        li 3
-                        li Last
+                                if news_data.news_page>1
+                                    .list_box
+                                        -n=(cur_type==key && cur_page >=4? cur_page-2: 0)
+                                        -m= (news_data.news_page<4)?news_data.news_page:(n+4);
+                                        ul
+                                            if cur_type==key && cur_page>=4
+                                                a(href="news?type="+ key+"&page=1")
+                                                    li 1
+                                                li(style='background:transparent;cursor:none;') ...
+                                                
+                                            while n < m
+                                                -n++
+                                                if cur_type==key && cur_page==n
+                                                    li(style='cursor:none') #{n}
+                                                else
+                                                    a(href="news?type="+ key+"&page="+n)
+                                                        li #{n}
+                                            if news_data.news_page>4 && n<news_data.news_page
+                                                li(style='background:transparent;cursor:none;') ...
+                                                a(href="news?type="+ key+"&page="+news_data.news_page)
+                                                    li #{news_data.news_page}
+                                            
+                
         .footer
             .footer_copyright
                 span.netease
@@ -74,3 +90,22 @@ script.
   gtag('js', new Date());
 
   gtag('config', 'UA-65559425-9');
+
+  function nextPage(newsType, page){
+      var url = '/news/get_news?newsType='+newsType+'&page=' + page;
+      //console.log("newsType", newsType)
+      //console.log("page", page)
+      console.log("event.target", event.target.parentNode)
+      
+      window.fetch(url, {
+        method: 'GET',
+        headers: new Headers({
+            'Content-Type': 'application/json'
+            })
+        }).then(function(response) {
+            return response.json()
+        })
+        .catch(function(error) { console.error('Error:', error)})
+        .then(res => console.log(res))
+        
+  }
