@@ -40,7 +40,7 @@ html(lang="zh-Hant-TW")
                                 ul
                                     each news_item in news_data.news
                                         li
-                                            a(href="/news/" + news_item.id)
+                                            a(href="/news/n/" + news_item.id)
                                                 .news_content_position
                                                     .news_inner
                                                         .news_title_text #{news_item.title}
@@ -73,14 +73,107 @@ script(src="/js/jquery-2.1.1.min.js")
 script(src="/js/jquery.multipurpose_tabcontent.js")
 script(type="text/javascript", src="/js/news_list_mb.js")
 script.
+  
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'UA-65559425-9');
 
+  var page_global = {
+      0:{'cur_page':1, 'total_pages':!{JSON.stringify(news_group[0].news_page)}},
+      1:{'cur_page':1, 'total_pages':!{JSON.stringify(news_group[1].news_page)}},
+      2:{'cur_page':1, 'total_pages':!{JSON.stringify(news_group[2].news_page)}},
+      3:{'cur_page':1, 'total_pages':!{JSON.stringify(news_group[3].news_page)}},
+  };
+  
+  var news_type= !{JSON.stringify(news_type)};
+  document.getElementsByClassName("load_more")[0].addEventListener("click", function(){
+      
+      var activeTab = document.getElementsByClassName("tab_list")[0]
+      var selectType=null;
+      for (var i = 0; i < activeTab.children.length; i++) {
+          //console.log(i, activeTab.children[i].className);
+          if (activeTab.children[i].className=="active")
+          {
+              selectType=i;
+              }
+        }
+    var news = nextPage(selectType );
+    //console.log(news);
 
-  document.getElementById("load_more").addEventListener("click", function(){
-    //document.getElementsByClassName("news_inner").innerHTML = "Hello World";
-    console.log("hi")
+    
+
+
+    
+      
     });
+
+     function nextPage(newsType){
+         let page = page_global[newsType].cur_page;
+         page++;
+         console.log("page", page_global[newsType].cur_page)
+         
+         if (page_global[newsType].cur_page >= page_global[newsType].total_pages){
+             alert('已經到本分類最後一頁');
+         }
+      var url = '/news/get_news?newsType='+newsType+'&page=' + page;
+      console.log("newsType", newsType)
+      
+      
+      window.fetch(url, {
+        method: 'GET',
+        headers: new Headers({
+            'Content-Type': 'application/json'
+            })
+        }).then(function(response) {
+            return response.json()
+        })
+        .catch(function(error) { console.error('Error:', error)})
+        .then(function(res){
+            //console.log("res", res.msg);
+            
+            page_global[newsType].cur_page=page;
+            //console.log("page",page);
+            const news = res.msg;
+            for (var i = 0; i< news.length; i++) {
+                var new_li = document.createElement("li");
+                var new_anchor = document.createElement("a");
+                new_anchor.setAttribute('href', '/news/n/'+news[i].id );
+                new_li.appendChild(new_anchor)
+                
+                var newsDiv = document.createElement("div");
+                newsDiv.className="news_content_position";
+                new_anchor.appendChild(newsDiv);
+                var innerDiv = document.createElement("div");
+                innerDiv.className="news_inner";
+                var titleDiv = document.createElement("div");
+                titleDiv.className="news_title_text";
+                titleDiv.innerText=news[i].title
+                var contentDiv = document.createElement("div");
+                contentDiv.className="news_content_text";
+                contentDiv.innerHTML=news[i].hero_image===null?news[i].preview_content:"<img src='" + news[i].hero_image + "' />"
+
+                
+
+                var sortDiv = document.createElement("div");
+                sortDiv.className="news_sort";
+                sortDiv.innerText= news_type[news[i].type];
+                var dtDiv = document.createElement("div");
+                dtDiv.className="date_time";
+                dtDiv.innerText= news[i].start_date;
+                
+                newsDiv.appendChild(innerDiv);
+                newsDiv.appendChild(sortDiv);
+                newsDiv.appendChild(dtDiv);
+                innerDiv.appendChild(titleDiv);
+                innerDiv.appendChild(contentDiv);
+                var tabUL = document.getElementsByClassName("tab_content")[newsType].children[0];
+                tabUL.appendChild(new_li);
+
+                
+            }
+            return;
+        })
+        
+  }

@@ -377,7 +377,7 @@ right:20px;
 	width: 331px;
 	height: 81px;
 	background: url(../img/mumu_dln.png) top center no-repeat;
-	bottom:40px;
+	bottom:30px;
 	left:15px;
 	cursor: pointer;
 }
@@ -1064,7 +1064,7 @@ right:20px;
 
 .left_nav_txt {
 	width: 320px;
-	height: 70px;
+	height: 75px;
 	margin: 0 auto;
 	margin-top: 5px;
 	padding: 5px;

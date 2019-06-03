@@ -336,9 +336,12 @@ a {
 }
 
 .list_box {
-  width: 285px;
-  margin: 0 auto;
+  position: absolute;
+  width: 245px;
+  left: 50%;
+  margin-left: -122px;
   height: 30px;
+  bottom: -30px;
 }
 .list_box ul {
   width: auto;
