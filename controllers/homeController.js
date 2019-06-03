@@ -7,7 +7,8 @@ exports.home = async function(req, res, next) {
       ip === req.headers["x-forwarded-for"] ||
       ip === req.connection.remoteAddress
   );
-  if (ip_ok.length < 1) {
+  //console.log("req.hostname", req.hostname);
+  if (ip_ok.length < 1 && req.hostname !== "127.0.0.1") {
     //inoffice
     res.redirect("/event/preregister");
     return;
