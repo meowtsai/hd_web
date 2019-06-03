@@ -38,9 +38,9 @@ html(lang="zh-Hant-TW")
                             a(data-fancybox href="https://youtu.be/wH6imgMfAnw" data-width="700" data-height="395")
                                 .top_video
                         .download-container
-                            a(href="https://go.onelink.me/doyd?pid=longe")
+                            a(href=tw_download_link)
                                 .ob_download.tw_style
-                            a(href="https://go.onelink.me/5uW4?pid=longe")
+                            a(href=hk_download_link)
                                 .ob_download.hk_style
                     .slide-down
             .section.test_hide.fp-auto-height#section1
@@ -57,22 +57,22 @@ html(lang="zh-Hant-TW")
                                                 .section2_swiper_newsphoto_title 新聞
                                                 .section2_swiper_newsphoto_txt #{headline[1].title}
                                                 .section2_swiper_newsphoto_time #{headline[1].date}
-                                .swiper-slide
-                                    a(href="/news/n/"+ headline[2].id)
-                                        .seciotn2_banner
-                                            img(src="img/news_1.jpg" alt="" width="auto" height="100%")
-                                            .section2_swiper_newsphoto_bottomnav
-                                                .section2_swiper_newsphoto_title 新聞
-                                                .section2_swiper_newsphoto_txt #{headline[2].title}
-                                                .section2_swiper_newsphoto_time #{headline[2].date}
-                                .swiper-slide
-                                    a(href="/news/n/"+ headline[3].id)
-                                        .seciotn2_banner
-                                            img(src="img/news_3.jpg" alt="" width="auto" height="100%")
-                                            .section2_swiper_newsphoto_bottomnav
-                                                .section2_swiper_newsphoto_title 新聞
-                                                .section2_swiper_newsphoto_txt #{headline[3].title}
-                                                .section2_swiper_newsphoto_time #{headline[3].date}
+                                //- .swiper-slide
+                                //-     a(href="/news/n/"+ headline[2].id)
+                                //-         .seciotn2_banner
+                                //-             img(src="img/news_1.jpg" alt="" width="auto" height="100%")
+                                //-             .section2_swiper_newsphoto_bottomnav
+                                //-                 .section2_swiper_newsphoto_title 新聞
+                                //-                 .section2_swiper_newsphoto_txt #{headline[2].title}
+                                //-                 .section2_swiper_newsphoto_time #{headline[2].date}
+                                //- .swiper-slide
+                                //-     a(href="/news/n/"+ headline[3].id)
+                                //-         .seciotn2_banner
+                                //-             img(src="img/news_3.jpg" alt="" width="auto" height="100%")
+                                //-             .section2_swiper_newsphoto_bottomnav
+                                //-                 .section2_swiper_newsphoto_title 新聞
+                                //-                 .section2_swiper_newsphoto_txt #{headline[3].title}
+                                //-                 .section2_swiper_newsphoto_time #{headline[3].date}
                     #swiper-pagination_section2
                     .section2_news
                         .tab_wrapper.mb_tab

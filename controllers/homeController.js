@@ -8,7 +8,7 @@ exports.home = async function(req, res, next) {
       ip === req.connection.remoteAddress
   );
   //console.log("req.hostname", req.hostname);
-  if (ip_ok.length < 1 && req.hostname !== "127.0.0.1") {
+  if (ip_ok.length < 1 && req.hostname !== "127.0.0.1" && !config.is_open) {
     //inoffice
     res.redirect("/event/preregister");
     return;
@@ -25,16 +25,14 @@ exports.home = async function(req, res, next) {
   //console.log("ending", moment(new Date()).format("YYYY-MM-DD HH:mm:ss"));
   //console.log(news);
 
-  const GPlink =
-    "https://play.google.com/store/apps/details?id=com.netease.hdjytw";
-
   page_options = {
     title: config.title,
     meta_keyword: config.meta_keyword,
     meta_desc: config.meta_desc,
     social_media: config.social_media,
     headline: config.headline,
-    GPlink,
+    tw_download_link: config.tw_download_link,
+    hk_download_link: config.hk_download_link,
     news_group: [news, news_1, news_2, news_3],
     moment
   };
