@@ -150,3 +150,6 @@
 .news_page_content p {
   padding: 15px;
 }
+.news_page_content strong {
+  font-weight: 600;
+}
