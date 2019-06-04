@@ -69,8 +69,8 @@ exports.preregister = function(req, res, next) {
   const date_now = new Date();
   const cb_end_date = new Date("2019-03-28 17:20:00");
   //const cb_end_date = new Date("2019-03-28 15:00:00");
-  console.log("date_now", date_now);
-  console.log("cb_end_date", cb_end_date);
+  //console.log("date_now", date_now);
+  //console.log("cb_end_date", cb_end_date);
   let display_cb = true;
   if (date_now > cb_end_date) {
     display_cb = false;
@@ -117,6 +117,7 @@ exports.post_preregister = [
     .trim()
     .escape(),
   (req, res, next) => {
+    return res.status(422).json({ errors: "Event ended", status: "failed" });
     const errors = validationResult(req);
     //console.log("------------" ,req.connection);
     //console.log("-----threadId-------" ,connection.threadId);

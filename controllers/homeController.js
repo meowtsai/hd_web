@@ -2,17 +2,17 @@ const moment = require("moment");
 const Bulletins = require("../models/BulletinModel");
 const config = require("../config");
 exports.home = async function(req, res, next) {
-  const ip_ok = config.insider_ip.filter(
-    ip =>
-      ip === req.headers["x-forwarded-for"] ||
-      ip === req.connection.remoteAddress
-  );
-  //console.log("req.hostname", req.hostname);
-  if (ip_ok.length < 1 && req.hostname !== "127.0.0.1" && !config.is_open) {
-    //inoffice
-    res.redirect("/event/preregister");
-    return;
-  }
+  // const ip_ok = config.insider_ip.filter(
+  //   ip =>
+  //     ip === req.headers["x-forwarded-for"] ||
+  //     ip === req.connection.remoteAddress
+  // );
+  // //console.log("req.hostname", req.hostname);
+  // if (ip_ok.length < 1 && req.hostname !== "127.0.0.1" && !config.is_open) {
+  //   //inoffice
+  //   res.redirect("/event/preregister");
+  //   return;
+  // }
 
   const game_id = config.game_id;
 

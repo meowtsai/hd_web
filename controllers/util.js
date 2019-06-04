@@ -2,7 +2,7 @@ let config = require("../config");
 
 exports.get_count = function(req, res, next) {
   //return res.status(200).json({count:prereg_count() });
-  return prereg_count();
+  return 261081;
 };
 
 function prereg_count() {
