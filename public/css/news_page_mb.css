@@ -147,3 +147,6 @@
   cursor: pointer;
   z-index: 50;
 }
+.news_page_content p {
+  padding: 15px;
+}
