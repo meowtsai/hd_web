@@ -28,6 +28,7 @@ app.use(helmet());
 app.use(function(req, res, next) {
   var useragent = req.headers["user-agent"];
   //console.log("app env=" + app.get('env'));
+  //console.log("useragent=" + useragent);
   //process.env.NODE_ENVconsole.log("process.env. env=" + JSON.stringify(process.env.NODE_ENV));
 
   if (useragent.indexOf("Mobi") > 0) {
