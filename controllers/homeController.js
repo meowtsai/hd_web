@@ -33,6 +33,10 @@ exports.home = async function(req, res, next) {
     headline: config.headline,
     tw_download_link: config.tw_download_link,
     hk_download_link: config.hk_download_link,
+    tw_gp_link: config.tw_gp_link,
+    hk_gp_link: config.hk_gp_link,
+    tw_ios_link: config.tw_ios_link,
+    hk_ios_link: config.hk_ios_link,
     news_group: [news, news_1, news_2, news_3],
     moment
   };
