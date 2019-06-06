@@ -21,22 +21,18 @@ app.set("port", port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+if (app.get("env") !== "production") {
+  var server = http.createServer(app);
+} else {
+  var fs = require("fs");
+  var options = {
+    key: fs.readFileSync(config.ssl_options.keyfile),
+    cert: fs.readFileSync(config.ssl_options.certfile),
+    ca: [fs.readFileSync(config.ssl_options.cafile)]
+  };
 
-// if (app.get('env')!=="production")
-// {
-//   var server = http.createServer(app);
-// }
-// else {
-//   var fs = require('fs');
-//   var options = {
-//     key: fs.readFileSync(config.ssl_options.keyfile),
-//     cert: fs.readFileSync(config.ssl_options.certfile),
-//     ca: [fs.readFileSync(config.ssl_options.cafile)]
-//   }
-
-//   var server = https.createServer(options , app);
-// }
+  var server = https.createServer(options, app);
+}
 
 /**
  * Listen on provided port, on all network interfaces.
