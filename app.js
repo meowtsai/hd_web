@@ -54,6 +54,20 @@ app.use("/event", preRouter);
 app.use("/cake", cakeRouter);
 app.use("/news", newsRouter);
 
+app.get(
+  "/.well-known/acme-challenge/tZQ9mH_EbyA8mq8NDrGrspBwuyvmSbpbmhHym6xywTo",
+  function(req, res) {
+    res.send("hello world");
+  }
+);
+
+app.get(
+  "/.well-known/acme-challenge/O064iyemLXSqQXJM2nQa22OwUsq3nOm1Nyi2tUbg8iU",
+  function(req, res) {
+    res.send("hello world");
+  }
+);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
