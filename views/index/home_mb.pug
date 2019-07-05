@@ -14,6 +14,7 @@ html(lang="zh-Hant-TW")
         link(rel='stylesheet', href='css/jquery.fancybox.css')
         link(rel='stylesheet', href='css/animate.min.css')        
         link(rel='stylesheet', href='css/pre_page_mb_201900529.css')
+        script(async src="https://www.googletagmanager.com/gtag/js?id=UA-65559425-9")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js")
     body
         .top_nav
@@ -170,17 +171,15 @@ script.
                 sc5_ani.addClass("animated rubberBand fast");		 	
             }  
         } });
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-65559425-9');
-  
 script(type="text/javascript", src="js/swiper.js")
 script(type="text/javascript", src="js/jquery.multipurpose_tabcontent.js")
 script(type="text/javascript", src="js/jquery.fancybox.js")
 script(type="text/javascript", src="js/pre_dawnofisles_mb.js")
+script.
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-
+  gtag('config', 'UA-65559425-9');
 
 
